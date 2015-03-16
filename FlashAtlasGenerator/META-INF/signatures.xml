@@ -1,0 +1,38 @@
+<signatures>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="PackageSignature">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <SignatureMethod Algorithm="http://www.w3.org/TR/xmldsig-core#rsa-sha1"/>
+      <Reference URI="#PackageContents">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <DigestValue>SG+iMw4FWb0Ld5W0xMejnW57/EQAW2c2w1mtaKQtfNs=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue Id="PackageSignatureValue">mUby3AaRZkKj3l9Yuc4GoYkKML2QQX/FndoFkQQogf7WuHTBe54LxAn5nSHh1IGYPj2XDHFgSsnB
+lRtaWzZLx6sFi5H5S6xczH+Ot+CT+pUmOYLE7ubfGz0IFwufCaHIxgz/5bX3MD3uBRey4H5QJfr7
+MEfTnvjdVZK++ST1xFo=</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIICIjCCAYqgAwIBAgIbLTEzZDgzMTViOjE0YjBiNGIwNjcxOi04MDAwMA0GCSqGSIb3DQEBBQUA
+MD0xCzAJBgNVBAYTAlVTMQ4wDAYDVQQKEwVBZG9iZTEOMAwGA1UECxMFQWRvYmUxDjAMBgNVBAMT
+BUt5YW5nMB4XDTE1MDEyMDA3MDA0MVoXDTQwMDEyMTA3MDA0MVowPTELMAkGA1UEBhMCVVMxDjAM
+BgNVBAoTBUFkb2JlMQ4wDAYDVQQLEwVBZG9iZTEOMAwGA1UEAxMFS3lhbmcwgZ8wDQYJKoZIhvcN
+AQEBBQADgY0AMIGJAoGBAMeFaMkVGhOoEfD7Uw8VezqYHH9ESsfskNYASdfv/s6GQA6zarGJpfkQ
+MbIk99MhRPofVdTjfqEfP1cwQKG+MRWZ5z6tdFvGCcke52a6n3g2Vzh6ul/iy5cMHdXli1JY7AVd
+pN+O86qFkTHrwHxSR+kC/sjzhJDLbjUbxyAGIV8HAgMBAAGjFzAVMBMGA1UdJQQMMAoGCCsGAQUF
+BwMDMA0GCSqGSIb3DQEBBQUAA4IAgQCZEaJxfpL/6ihII6qFpi0Ke/01GNxZi+HkQgAAG37l2Vzn
+ldDrS3SsvZSiG+pKzmh/D0gtTZa7H0phOGXLM5igYrbDJei4FnQAb7+exwAeV5Ip1bJ/7Vt/AZGC
+YJLzkmg6xy/YUI/hrIZrB9t4ecVpXPPZns7+50XfeqiFuDeVyw==</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+    <Object>
+      <Manifest Id="PackageContents">
+        <Reference URI="mimetype"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>0/oCb84THKMagtI0Dy0KogEu92TegdesqRr/clXct1c=</DigestValue></Reference><Reference URI="META-INF/AIR/application.xml"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>ZWWTdEeVeZCAhv0k45BjKhSsQMnukTJlvEmc/3uVJQQ=</DigestValue></Reference><Reference URI="FlashAtlasGenerator.swf"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod><DigestValue>6mR1H8IMpRxw1sQiLmey9DEky6MWTwif49zXbgk1hxc=</DigestValue></Reference>
+      </Manifest>
+    </Object>
+    
+  </Signature>
+</signatures>

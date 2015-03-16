@@ -5,12 +5,15 @@ public class Geek : MonoBehaviour {
 	public Transform floor;
 	public ArenaGameManager gameManager;
 
-	private Vector3 moveVect = new Vector3();
+	private Vector3 vect = new Vector3();
 
+	public float rotation;
 	public float speedX;
 	public float speedY;
 	public float friction;
+
 	private Animator animator;
+	private float reboundRot;
 
 	public bool paused = false;
 
@@ -35,6 +38,9 @@ public class Geek : MonoBehaviour {
 			if (enemy.gameObject.tag == "EnemyFloor") {
 				enemy.moveYSpeed = -0.1f;
 				enemy.moveXSpeed = gameManager.geek.speedX * 0.8f;
+				CallRebound();
+			} else if (enemy.gameObject.tag == "EnemyFly") {
+				CallRebound();
 			}
 
 			// lift up geek
@@ -42,44 +48,62 @@ public class Geek : MonoBehaviour {
 		}
 	}
 
-	void FixedUpdate() {
+	void Update() {
 		if (paused) {
 			return;
 		}
 
-		moveVect.x = transform.position.x;
-		moveVect.y = transform.position.y;
-		moveVect.z = transform.position.z;
+		vect.x = transform.position.x;
+		vect.y = transform.position.y;
+		vect.z = transform.position.z;
 		
 		speedY += gameManager.gravity;
 
 		// check hit floor
-		if (moveVect.y - circleCollider2d.radius < floor.position.y) {
-			moveVect.y = floor.position.y + circleCollider2d.radius;
+		if (vect.y - circleCollider2d.radius < floor.position.y) {
+			vect.y = floor.position.y + circleCollider2d.radius;
 
 			speedX *= friction * 0.5f;
 			speedY *= -friction;
 			// Debug.Log("spX:" + speedX + ", spY:" + speedY + ", friction:" + friction);
 
-			moveVect.x += speedX;
-			moveVect.y += speedY;
+			vect.x += speedX;
+			vect.y += speedY;
 
 			// check is dead
 			if (speedX < 0.005f) {
-				moveVect.y = floor.position.y + circleCollider2d.radius;
+				vect.y = floor.position.y + circleCollider2d.radius;
+				rotation = 0;
 				if (!gameManager.gameOvered) {
 					gameManager.gameOver();
 					playDeadAnimation();
 				}
 			} else {
+				CallRebound();
 				playFlyAnimation(Random.Range(2, 5));
 			}
 		} else {
-			moveVect.x += speedX;
-			moveVect.y += speedY;
+			vect.x += speedX;
+			vect.y += speedY;
 		}
 
-		transform.position = moveVect;
+		transform.position = vect;
+
+		GeekRotation ();
+
+		vect.x = 0;
+		vect.y = 0;
+		vect.z = -rotation;
+		transform.localRotation = Quaternion.Euler(vect);
+	}
+
+	private void GeekRotation() {
+		rotation += reboundRot;
+		reboundRot *= 0.95f;
+	}
+
+	private void CallRebound() {
+		reboundRot = (speedX * speedX + speedY * speedY) * 100f;
 	}
 
 	public void playFlyAnimation(int state) {

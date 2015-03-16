@@ -75,10 +75,6 @@ public class ArenaGameManager : MonoBehaviour {
 			}
 		}
 
-		if (followObject) {
-			cameraFollower (followObject);
-		}
-
 		Vector3 skyPos = bgSky.transform.position;
 		if (skyPos.y > skyVanishiStart.position.y) {
 			SpriteRenderer sr = bgSky.GetComponent<SpriteRenderer> ();
@@ -97,6 +93,12 @@ public class ArenaGameManager : MonoBehaviour {
 			Color skyColor = sr.color;
 			skyColor.a = 1.0f;
 			sr.color = skyColor;
+		}
+	}
+
+	void LateUpdate() {
+		if (followObject) {
+			cameraFollower (followObject);
 		}
 	}
 

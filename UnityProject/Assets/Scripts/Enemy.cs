@@ -22,7 +22,7 @@ public class Enemy : MovableGameObject {
 		curbloodInteral = BLOOD_GEN_INTERAL;
 	}
 
-	public void FixedUpdate() {
+	public void Update() {
 		if (isDead && bloodManager) {
 
 			if (curbloodNum < BLOOD_GEN_MAX) {

@@ -10,7 +10,7 @@ public class NaviMapController : MonoBehaviour {
 		heroPanel.SetActive (false);
 	}
 
-	public void OnClickArena () {
+	public void OnClickPlay () {
  		Application.LoadLevel ("GameArena");
 	}
 
@@ -25,6 +25,13 @@ public class NaviMapController : MonoBehaviour {
 		HeroPanelController homeController = heroPanel.GetComponent<HeroPanelController>();
 		homeController.OpenPanel ();
 
+		HideNaviMap ();
+	}
+
+	public void OnClickSkill () {
+		HeroPanelController homeController = heroPanel.GetComponent<HeroPanelController>();
+		homeController.OpenPanel ();
+		
 		HideNaviMap ();
 	}
 

@@ -12,7 +12,6 @@ public class PowerMeter : Meter {
 	}
 
 	public override float GetPercentage() {
-		Debug.Log (cursor.transform.localPosition.y / maxPower);
 		return cursor.transform.localPosition.y / maxPower;
 	}
 

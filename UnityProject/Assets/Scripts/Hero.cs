@@ -63,8 +63,8 @@ public class Hero : MonoBehaviour {
 			geek.speedY += 0.5f;
 			playGroundHit();
 		}
-		
-		geek.playFlyAnimation (1);
+
+		geek.SetArrowHit (true);
 	}
 
 	private void playAirHit() {

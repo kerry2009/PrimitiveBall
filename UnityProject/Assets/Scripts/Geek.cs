@@ -14,16 +14,19 @@ public class Geek : MonoBehaviour {
 
 	private Animator animator;
 	private float reboundRot;
+	private bool arrowHitRotation;
 
 	public bool paused = false;
 
 	CircleCollider2D circleCollider2d;
 
 	void Start () {
+		rotation = 0;
 		paused = false;
 		speedX = 0f;
 		speedY = 0f;
 		friction = 0.6f;
+		arrowHitRotation = false;
 
 		circleCollider2d = GetComponent<CircleCollider2D>();
 		animator = GetComponent<Animator> ();
@@ -38,9 +41,6 @@ public class Geek : MonoBehaviour {
 			if (enemy.gameObject.tag == "EnemyFloor") {
 				enemy.moveYSpeed = -0.1f;
 				enemy.moveXSpeed = gameManager.geek.speedX * 0.8f;
-				CallRebound();
-			} else if (enemy.gameObject.tag == "EnemyFly") {
-				CallRebound();
 			}
 
 			// lift up geek
@@ -50,6 +50,7 @@ public class Geek : MonoBehaviour {
 
 	void Update() {
 		if (paused) {
+			SetGeekRotation (-rotation);
 			return;
 		}
 
@@ -79,7 +80,9 @@ public class Geek : MonoBehaviour {
 					playDeadAnimation();
 				}
 			} else {
-				CallRebound();
+				arrowHitRotation = false;
+				// hit floor and rotation
+				CallFloorRebound();
 				playFlyAnimation(Random.Range(2, 5));
 			}
 		} else {
@@ -89,20 +92,30 @@ public class Geek : MonoBehaviour {
 
 		transform.position = vect;
 
-		GeekRotation ();
+		if (arrowHitRotation) {
+			rotation = -Mathf.Atan2(speedY * 0.5f, speedX) * (180 / Mathf.PI) + 90f;
+		} else {
+			rotation += reboundRot;
+			reboundRot *= 0.95f;
+		}
 
+		SetGeekRotation (-rotation);
+	}
+
+	private void SetGeekRotation(float rot) {
 		vect.x = 0;
 		vect.y = 0;
-		vect.z = -rotation;
+		vect.z = rot;
 		transform.localRotation = Quaternion.Euler(vect);
 	}
 
-	private void GeekRotation() {
-		rotation += reboundRot;
-		reboundRot *= 0.95f;
+	public void SetArrowHit(bool isArrowHitRot) {
+		arrowHitRotation = isArrowHitRot;
+		playFlyAnimation (1);
 	}
 
-	private void CallRebound() {
+	private void CallFloorRebound() {
+		arrowHitRotation = false;
 		reboundRot = (speedX * speedX + speedY * speedY) * 100f;
 	}
 

@@ -185,7 +185,7 @@ public class ArenaGameManager : MonoBehaviour {
 		geek.speedY = Mathf.Sin (hitAngleInRadian) * firstHitPower;
 		// Debug.Log (geek.speedX + "`````" + geek.speedY);
 
-		geek.playFlyAnimation (1);
+		geek.SetArrowHit (true);
 	}
 
 	public void showFlashScreen() {

@@ -52,7 +52,6 @@ public class Hero : MonoBehaviour {
 	}
 
 	public void hit() {
-
 		// air hit
 		if (geek.transform.position.y > hitDivLine.position.y) {
 			geek.speedX = 0.8f;
@@ -65,6 +64,24 @@ public class Hero : MonoBehaviour {
 		}
 
 		geek.SetArrowHit (true);
+	}
+
+	public void PlayHeroStand() {
+		currentState = STATE_IDLE;
+		targetState = STATE_IDLE;
+		animator.Play ("HeroStand");
+	}
+
+	public void PlayHeroReady() {
+		currentState = STATE_IDLE;
+		targetState = STATE_IDLE;
+		animator.Play ("HeroReady");
+	}
+
+	public void PlayHeroStartHit() {
+		currentState = STATE_IDLE;
+		targetState = STATE_IDLE;
+		animator.Play ("HeroStartHit");
 	}
 
 	private void playAirHit() {

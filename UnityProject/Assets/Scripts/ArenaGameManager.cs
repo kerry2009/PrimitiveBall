@@ -49,12 +49,16 @@ public class ArenaGameManager : MonoBehaviour {
 	public bool resposeMouseClick;
 
 	void Start() {
+		Debug.Log (Application.persistentDataPath);
+
 		gravity = 0f;
 		resposeMouseClick = true;
 		lastCameraPos = new Vector2 (mainCamera.transform.position.x, mainCamera.transform.position.y);
 
 		powerMeter.CursorRun ();
 		powerMeter.easeIn ();
+
+		hero.PlayHeroStand ();
 	}
 
 	// Update is called once per frame
@@ -160,6 +164,8 @@ public class ArenaGameManager : MonoBehaviour {
 		powerMeter.easeOut ();
 		angleMeter.CursorRun ();
 		angleMeter.easeIn ();
+
+		hero.PlayHeroReady ();
 	}
 	
 	private void selectAngleAndHit() {
@@ -174,16 +180,16 @@ public class ArenaGameManager : MonoBehaviour {
 	}
 
 	private void hitGeekFirst() {
+		hero.PlayHeroStartHit ();
+
 		FlashScreen.gameObject.SetActive (true);
 		showFlashScreen ();
 
-		followObject = geek.transform;
 		float hitAngleInRadian = (MIN_HIT_ANGLE + firstHitAngle * MAX_HIT_ANGLE) * (Mathf.PI / 180);
 
 		gravity = -0.01f;
 		geek.speedX = Mathf.Cos (hitAngleInRadian) * firstHitPower;
 		geek.speedY = Mathf.Sin (hitAngleInRadian) * firstHitPower;
-		// Debug.Log (geek.speedX + "`````" + geek.speedY);
 
 		geek.SetArrowHit (true);
 	}

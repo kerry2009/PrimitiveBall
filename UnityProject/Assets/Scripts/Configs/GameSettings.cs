@@ -12,4 +12,6 @@ public class GameSettings {
 		boosterConfigs = Resources.LoadAll<BoosterItemConfig> ("Prefabs/BoosterCfg");
 	}
 
+
+
 }

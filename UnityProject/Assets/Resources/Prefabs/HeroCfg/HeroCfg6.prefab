@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53f3966a374f5543803e4132c69ee5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 6
   shopIcon: {fileID: 21300006, guid: 6895d290daaf1de4bb21509a0c109ce1, type: 3}
   itemName: h5
 --- !u!1001 &100100000

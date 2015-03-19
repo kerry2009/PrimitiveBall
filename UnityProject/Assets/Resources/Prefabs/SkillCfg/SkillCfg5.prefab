@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb06f14507511ac4e8720ad39bf4dce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 5
   shopIcon: {fileID: 21300006, guid: 3a5b5224e5c41a54f9d062791015fc28, type: 3}
   itemName: EnemyReboud
 --- !u!1001 &100100000

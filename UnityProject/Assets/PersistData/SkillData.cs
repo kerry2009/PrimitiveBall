@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WeaponItem {
-	public int id;
+[System.Serializable]
+public class SkillData {
 }

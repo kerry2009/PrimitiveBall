@@ -3,11 +3,14 @@ using System.Collections;
 
 public class NaviMapController : MonoBehaviour {
 	public GameObject naviMapPanel;
-	public GameObject heroPanel;
+
+	public HeroPanel heroPanel;
+	public SkillsPanel skillPanel;
 
 	// Use this for initialization
 	void Start () {
-		heroPanel.SetActive (false);
+		heroPanel.gameObject.SetActive (false);
+		skillPanel.gameObject.SetActive (false);
 	}
 
 	public void OnClickPlay () {
@@ -15,23 +18,17 @@ public class NaviMapController : MonoBehaviour {
 	}
 
 	public void OnClickHero () {
-		HeroPanelController homeController = heroPanel.GetComponent<HeroPanelController>();
-		homeController.OpenPanel ();
-
+		heroPanel.OpenPanel ();
 		HideNaviMap ();
 	}
 
 	public void OnClickForge () {
-		HeroPanelController homeController = heroPanel.GetComponent<HeroPanelController>();
-		homeController.OpenPanel ();
-
+		heroPanel.OpenPanel ();
 		HideNaviMap ();
 	}
 
 	public void OnClickSkill () {
-		HeroPanelController homeController = heroPanel.GetComponent<HeroPanelController>();
-		homeController.OpenPanel ();
-		
+		skillPanel.OpenPanel ();
 		HideNaviMap ();
 	}
 

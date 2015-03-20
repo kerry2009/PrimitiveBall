@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: c4627cdfc644a154db15ed9f3870f548
+timeCreated: 1426844037
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: hero_sky_ground_run_head
+    21300002: hero_sky_ground_arml
+    21300004: hero_sky_ground_armr
+    21300006: hero_sky_ground_run_body
+    21300008: hero_sky_ground_run_skirt_1
+    21300010: hero_run_arml
+    21300012: hero_run_armr
+    21300014: hero_run_skirt_2
+    21300016: hero_run_skirt_3
+    21300018: hero_sky_ground_run_foot
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: hero_sky_ground_run_head
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 100
+        height: 93
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sky_ground_arml
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 74
+        width: 50
+        height: 60
+      alignment: 9
+      pivot: {x: .600000024, y: .600000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sky_ground_armr
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 67
+        width: 45
+        height: 70
+      alignment: 9
+      pivot: {x: .400000006, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sky_ground_run_body
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 75
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sky_ground_run_skirt_1
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 78
+        width: 70
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_run_arml
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 8
+        width: 75
+        height: 40
+      alignment: 9
+      pivot: {x: .75, y: .400000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_run_armr
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 10
+        width: 55
+        height: 55
+      alignment: 9
+      pivot: {x: .400000006, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_run_skirt_2
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 14
+        width: 55
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_run_skirt_3
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 18
+        width: 60
+        height: 45
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sky_ground_run_foot
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 21
+        width: 30
+        height: 30
+      alignment: 9
+      pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

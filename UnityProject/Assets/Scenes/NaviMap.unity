@@ -240,9 +240,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 263925841}
+  - {fileID: 1023326067}
   - {fileID: 450008827}
   - {fileID: 1544362254}
-  - {fileID: 1023326067}
   - {fileID: 521316988}
   m_Father: {fileID: 780654338}
   m_RootOrder: 1
@@ -336,7 +336,7 @@ GameObject:
   - 114: {fileID: 450008829}
   - 114: {fileID: 450008828}
   m_Layer: 5
-  m_Name: BuyButton
+  m_Name: HeroButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +354,7 @@ RectTransform:
   m_Children:
   - {fileID: 1052753001}
   m_Father: {fileID: 404081271}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 124, y: 100}
@@ -398,7 +398,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 450008829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2084267090}
+        m_MethodName: OnClickHero
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &450008829
@@ -440,12 +452,12 @@ GameObject:
   - 114: {fileID: 521316990}
   - 114: {fileID: 521316989}
   m_Layer: 5
-  m_Name: BuyButton
+  m_Name: SkillsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &521316988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -461,7 +473,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 19.9972534, y: -47.8005829}
+  m_AnchoredPosition: {x: 123, y: 17}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &521316989
@@ -502,7 +514,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 521316990}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2084267090}
+        m_MethodName: OnClickSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &521316990
@@ -616,6 +640,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &650077838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 650077839}
+  - 114: {fileID: 650077840}
+  m_Layer: 5
+  m_Name: SelectItems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &650077839
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650077838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 722090674}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -2, y: -27}
+  m_SizeDelta: {x: 720, y: 422.5}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &650077840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650077838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2095666955, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 33
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 228, y: 111}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 1
+  m_ConstraintCount: 3
 --- !u!1 &685981353
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +755,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy
+  m_Text: Skills
 --- !u!222 &685981356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -709,12 +789,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1276269185}
+  - {fileID: 650077839}
   m_Father: {fileID: 780654338}
   m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: 0}
-  m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 5.99724865, y: 244.199417}
-  m_SizeDelta: {x: 764, y: 487.600006}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 5.99724865, y: -29.8005829}
+  m_SizeDelta: {x: 764, y: 487.599976}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &722090675
 MonoBehaviour:
@@ -724,12 +805,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 722090673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 079f34a3ae14b3044b8ed2ead239cd57, type: 3}
+  m_Script: {fileID: 11500000, guid: 109efc6ea98366d45a9f8f6c11f4668f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsListContainer: {fileID: 0}
-  gridLayout: {fileID: 0}
-  shopItemPrefab: {fileID: 11445506, guid: bb087f16b296fe8439dff51bff3a5fb5, type: 2}
+  itemsListContainer: {fileID: 650077839}
+  shopItemPrefab: {fileID: 11437406, guid: 72415e612cda82f4f86e609c4aa7d2ca, type: 2}
 --- !u!1 &780654334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1140,7 @@ RectTransform:
   m_LocalScale: {x: 1.00194454, y: 1.00194454, z: 1.00194454}
   m_Children: []
   m_Father: {fileID: 404081271}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 189.709778, y: -114}
@@ -1125,7 +1205,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy Weapon
+  m_Text: Hero
 --- !u!222 &1052753003
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1206,7 +1286,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 722090675}
+      - m_Target: {fileID: 0}
         m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
@@ -1289,7 +1369,7 @@ RectTransform:
   m_Children:
   - {fileID: 301566969}
   m_Father: {fileID: 404081271}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 124, y: 62}
@@ -1545,10 +1625,10 @@ RectTransform:
   - {fileID: 1011058902}
   m_Father: {fileID: 780654338}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: 0}
-  m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 5.99725914, y: 244.199417}
-  m_SizeDelta: {x: 764, y: 487.600006}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 5.99725914, y: -38.8005829}
+  m_SizeDelta: {x: 764, y: 487.599976}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1818622473
 MonoBehaviour:
@@ -1558,7 +1638,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1818622471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 079f34a3ae14b3044b8ed2ead239cd57, type: 3}
+  m_Script: {fileID: 11500000, guid: fcf98fb81681bca43abd6365da0772be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemsListContainer: {fileID: 0}
@@ -1721,10 +1801,10 @@ RectTransform:
   - {fileID: 2033105021}
   m_Father: {fileID: 780654338}
   m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: 0}
-  m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 6, y: 244.199738}
-  m_SizeDelta: {x: 764, y: 487.600006}
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 6, y: -38.8002625}
+  m_SizeDelta: {x: 764, y: 487.599976}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &2051049200
 MonoBehaviour:
@@ -1734,7 +1814,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2051049198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 079f34a3ae14b3044b8ed2ead239cd57, type: 3}
+  m_Script: {fileID: 11500000, guid: fcf98fb81681bca43abd6365da0772be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemsListContainer: {fileID: 1795532752}
@@ -1768,7 +1848,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   naviMapPanel: {fileID: 404081270}
-  heroPanel: {fileID: 2051049198}
+  heroPanel: {fileID: 2051049200}
+  skillPanel: {fileID: 722090675}
 --- !u!4 &2084267091
 Transform:
   m_ObjectHideFlags: 0

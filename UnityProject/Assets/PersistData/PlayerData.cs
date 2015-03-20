@@ -6,12 +6,11 @@ using System.Collections.Generic;
 public class PlayerData {
 	public int coins = 0;
 
-	public string heroId;
-	public string weaponId;
-	public string booster1Id;
-	public string booster2Id;
+	public int heroId = 1;
+	public int weaponId = 1;
+	public int booster1Id = -1;
+	public int booster2Id = -1;
+	public uint lastGenIndex = 0;
 
-	public int[] weapons;
-	public int[] heros;
-	public int[] boosters;
+	public Dictionary<int, HeroData> heros;
 }

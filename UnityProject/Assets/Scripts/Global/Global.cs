@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Global : MonoBehaviour {
-	private static GameSettings _gs;
-	private static Player _player;
+	private static GameSettings _gs = null;
+	private static Player _player = null;
 
 	public static GameSettings gameSettings {
 		get {

@@ -49,8 +49,6 @@ public class ArenaGameManager : MonoBehaviour {
 	public bool resposeMouseClick;
 
 	void Start() {
-		Debug.Log (Application.persistentDataPath);
-
 		gravity = 0f;
 		resposeMouseClick = true;
 		lastCameraPos = new Vector2 (mainCamera.transform.position.x, mainCamera.transform.position.y);

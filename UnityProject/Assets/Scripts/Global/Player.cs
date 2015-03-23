@@ -19,6 +19,8 @@ public class Player {
 	public const int CUSTOM_ID = 1000;
 
 	public void initPlayer() {
+		Debug.Log (Application.persistentDataPath);
+
 		playerDataPath = Application.persistentDataPath + "/Player.gd";
 		weaponsDataPath = Application.persistentDataPath + "/Weapons.gd";
 		boostersDataPath = Application.persistentDataPath + "/Boosters.gd";
@@ -30,7 +32,7 @@ public class Player {
 		LoadBoostersData ();
 	}
 
-	private void LoadData<DType>(string path, DType data) {
+	private void LoadData<DType>(string path, ref DType data) {
 		if (File.Exists (path)) {
 			BinaryFormatter bf = new BinaryFormatter ();
 			FileStream file = File.Open (path, FileMode.Open);
@@ -48,7 +50,7 @@ public class Player {
 
 	// Player Data
 	private void LoadPlayerData() {
-		LoadData<PlayerData>(playerDataPath, _playerData);
+		LoadData<PlayerData>(playerDataPath, ref _playerData);
 		CheckPlayerDataValidation ();
 	}
 	private void SavePlayerData() {
@@ -58,7 +60,7 @@ public class Player {
 
 	// Skills Data
 	private void LoadSkillsData() {
-		LoadData<SkillsData>(skillsDataPath, _skills);
+		LoadData<SkillsData>(skillsDataPath, ref _skills);
 		CheckSkillsDataValidation ();
 	}
 	private void SaveSkillsData() {
@@ -68,7 +70,7 @@ public class Player {
 
 	// Weapons Data
 	private void LoadWeaponsData() {
-		LoadData<WeaponsData>(weaponsDataPath, _weapons);
+		LoadData<WeaponsData>(weaponsDataPath, ref _weapons);
 		CheckWeaponsValidation ();
 	}
 	private void SaveWeaponsData() {
@@ -78,7 +80,7 @@ public class Player {
 
 	// Boosters Data
 	private void LoadBoostersData() {
-		LoadData<BoostersData>(boostersDataPath, _boosters);
+		LoadData<BoostersData>(boostersDataPath, ref _boosters);
 		CheckBoostersValidation ();
 	}
 	private void SaveBoostersData() {
@@ -237,6 +239,36 @@ public class Player {
 		}
 	}
 
+	public int copper {
+		get {
+			return _playerData.copper;
+		}
+		set {
+			_playerData.copper = value;
+			SavePlayerData();
+		}
+	}
+
+	public int silver {
+		get {
+			return _playerData.silver;
+		}
+		set {
+			_playerData.silver = value;
+			SavePlayerData();
+		}
+	}
+
+	public int gold {
+		get {
+			return _playerData.gold;
+		}
+		set {
+			_playerData.gold = value;
+			SavePlayerData();
+		}
+	}
+
 	public void SetHeroById(int heroId) {
 		if (_playerData.heros.ContainsKey(heroId)) {
 			if (_playerData.heroId != heroId) {
@@ -248,9 +280,9 @@ public class Player {
 		}
 	}
 
-	public HeroData hero {
+	public int heroId {
 		get {
-			return _playerData.heros[_playerData.heroId];
+			return _playerData.heroId;
 		}
 	}
 
@@ -262,9 +294,9 @@ public class Player {
 		}
 	}
 
-	public WeaponData weapon {
+	public int weaponId {
 		get {
-			return _weapons.list[_playerData.weaponId];
+			return _playerData.weaponId;
 		}
 	}
 
@@ -276,9 +308,9 @@ public class Player {
 		}
 	}
 
-	public BoosterData booster1 {
+	public int booster1Id {
 		get {
-			return _boosters.list[_playerData.booster1Id];
+			return _playerData.booster1Id;
 		}
 	}
 
@@ -290,9 +322,27 @@ public class Player {
 		}
 	}
 
-	public BoosterData booster2 {
+	public int booster2Id {
 		get {
-			return _boosters.list[_playerData.booster2Id];
+			return _playerData.booster2Id;
+		}
+	}
+
+	public Dictionary<int, WeaponData> weapons {
+		get {
+			return _weapons.list;
+		}
+	}
+
+	public Dictionary<int, BoosterData> boosters {
+		get {
+			return _boosters.list;
+		}
+	}
+
+	public Dictionary<int, SkillData> skills {
+		get {
+			return _skills.list;
 		}
 	}
 

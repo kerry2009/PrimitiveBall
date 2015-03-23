@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class HeroPanel : GenericPanel {
-	public RectTransform itemsListContainer;
+public class HeroPanel : GridListPanel {
 	public GridLayoutGroup gridLayout;
 	public HeroItemDisplay shopItemPrefab;
+
+	private HeroItemDisplay currentHero = null;
 
 	// Use this for initialization
 	void Start () {
@@ -17,22 +18,32 @@ public class HeroPanel : GenericPanel {
 
 		foreach (HeroItemConfig heroCfg in Global.gameSettings.heroConfigs.Values) {
 			itemDisplay = (HeroItemDisplay)Instantiate(shopItemPrefab);
+			itemDisplay.panel = this;
 			itemDisplay.SetItemConfig(heroCfg);
 
-			itemDisplay.transform.SetParent(itemsListContainer, false);
+			itemDisplay.transform.SetParent(listContainer, false);
+
+			if (Global.player.heroId == heroCfg.id) {
+				currentHero = itemDisplay;
+				currentHero.OnSelected();
+			}
 		}
 
 		if (itemDisplay != null) {
-			itemsListContainer.sizeDelta = new Vector2(gridLayout.cellSize.x * Global.gameSettings.heroConfigs.Keys.Count + 10f, 160f);
+			listContainer.sizeDelta = new Vector2(gridLayout.cellSize.x * Global.gameSettings.heroConfigs.Keys.Count + 10f, 160f);
 		}
 	}
 
-	protected override void DestoryItems() {
-		GameObject childObject;
-		int numChildren = itemsListContainer.transform.childCount;
-		for (int i = 0; i < numChildren; i++) {
-			childObject = itemsListContainer.transform.GetChild(i).gameObject;
-			Destroy(childObject);
+	public void OnSelectHero(HeroItemDisplay selectedHero) {
+		if (currentHero != selectedHero) {
+			if (currentHero) {
+				currentHero.OnUnselected();
+			}
+
+			currentHero = selectedHero;
+			currentHero.OnSelected();
+
+			Global.player.SetHeroById(currentHero.itemConfig.id);
 		}
 	}
 

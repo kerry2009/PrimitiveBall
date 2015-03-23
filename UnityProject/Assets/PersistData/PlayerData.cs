@@ -12,5 +12,9 @@ public class PlayerData {
 	public int booster2Id = -1;
 	public uint lastGenIndex = 0;
 
+	public int copper = 0;
+	public int silver = 0;
+	public int gold = 0;
+
 	public Dictionary<int, HeroData> heros;
 }

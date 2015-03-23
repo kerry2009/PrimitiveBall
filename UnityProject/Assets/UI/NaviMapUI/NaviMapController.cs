@@ -6,30 +6,19 @@ public class NaviMapController : MonoBehaviour {
 
 	public HeroPanel heroPanel;
 	public SkillsPanel skillPanel;
+	public WeaponPanel weaponPanel;
+	public ForgePanel forgePanel;
 
 	// Use this for initialization
 	void Start () {
 		heroPanel.gameObject.SetActive (false);
 		skillPanel.gameObject.SetActive (false);
+		weaponPanel.gameObject.SetActive (false);
+		forgePanel.gameObject.SetActive (false);
 	}
 
 	public void OnClickPlay () {
  		Application.LoadLevel ("GameArena");
-	}
-
-	public void OnClickHero () {
-		heroPanel.OpenPanel ();
-		HideNaviMap ();
-	}
-
-	public void OnClickForge () {
-		heroPanel.OpenPanel ();
-		HideNaviMap ();
-	}
-
-	public void OnClickSkill () {
-		skillPanel.OpenPanel ();
-		HideNaviMap ();
 	}
 
 	public void ShowNaviMap () {

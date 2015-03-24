@@ -212,4 +212,8 @@ public class ArenaGameManager : MonoBehaviour {
 		}
 	}
 
+	public void LoadNaviMapScene () {
+		Application.LoadLevel ("NaviMap");
+	}
+
 }

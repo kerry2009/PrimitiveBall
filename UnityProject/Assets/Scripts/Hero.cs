@@ -4,6 +4,7 @@ using System.Collections;
 public class Hero : MonoBehaviour {
 
 	public ArenaGameManager gameManager;
+	public Animator animator;
 	public Geek geek;
 	public Transform hitDivLine;
 	public Transform heroRunFloor;
@@ -16,13 +17,10 @@ public class Hero : MonoBehaviour {
 	private const int STATE_AIRHIT = 2;
 	private const int STATE_GROUNDHIT = 3;
 
-	private Animator animator;
-
 	// Use this for initialization
 	void Start () {
 		currentState = STATE_IDLE;
 		targetState = STATE_IDLE;
-		animator = GetComponent<Animator> ();
 	}
 
 	void Update () {

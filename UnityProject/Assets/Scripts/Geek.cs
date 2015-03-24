@@ -4,6 +4,7 @@ using System.Collections;
 public class Geek : MonoBehaviour {
 	public Transform floor;
 	public ArenaGameManager gameManager;
+	public Animator animator;
 
 	private Vector3 vect = new Vector3();
 
@@ -11,7 +12,6 @@ public class Geek : MonoBehaviour {
 	public float speedY;
 	public bool paused = false;
 
-	private Animator animator;
 	private float reboundRot;
 	private bool arrowHitRotation;
 	private float rotation;
@@ -30,7 +30,6 @@ public class Geek : MonoBehaviour {
 		arrowHitRotation = false;
 
 		circleCollider2d = GetComponent<CircleCollider2D>();
-		animator = GetComponent<Animator> ();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {

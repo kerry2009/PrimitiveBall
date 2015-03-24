@@ -1,12 +1,12 @@
 fileFormatVersion: 2
 guid: c4627cdfc644a154db15ed9f3870f548
-timeCreated: 1426844037
+timeCreated: 1427171068
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: hero_sky_ground_run_head
     21300002: hero_sky_ground_arml
-    21300004: hero_sky_ground_armr
+    21300004: hero_sky_ground_armr_1
     21300006: hero_sky_ground_run_body
     21300008: hero_sky_ground_run_skirt_1
     21300010: hero_run_arml
@@ -14,6 +14,8 @@ TextureImporter:
     21300014: hero_run_skirt_2
     21300016: hero_run_skirt_3
     21300018: hero_sky_ground_run_foot
+    21300020: hero_sky_ground_armr_2
+    21300022: hero_sky_skirt_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -79,7 +81,7 @@ TextureImporter:
       alignment: 9
       pivot: {x: .600000024, y: .600000024}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: hero_sky_ground_armr
+    - name: hero_sky_ground_armr_1
       rect:
         serializedVersion: 2
         x: 166
@@ -102,7 +104,7 @@ TextureImporter:
     - name: hero_sky_ground_run_skirt_1
       rect:
         serializedVersion: 2
-        x: 279
+        x: 280
         y: 78
         width: 70
         height: 40
@@ -158,6 +160,26 @@ TextureImporter:
         height: 30
       alignment: 9
       pivot: {x: .5, y: .699999988}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sky_ground_armr_2
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 3
+        width: 34
+        height: 65
+      alignment: 9
+      pivot: {x: .349999994, y: .800000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_sky_skirt_2
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 120
+        width: 65
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

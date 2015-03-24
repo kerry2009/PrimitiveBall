@@ -42,6 +42,7 @@ MonoBehaviour:
   id: 3
   shopIcon: {fileID: 21300024, guid: 6895d290daaf1de4bb21509a0c109ce1, type: 3}
   itemName: w3
+  power: 1.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

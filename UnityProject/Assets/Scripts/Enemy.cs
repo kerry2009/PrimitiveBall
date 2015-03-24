@@ -16,6 +16,11 @@ public class Enemy : MovableGameObject {
 		bloodManager = GameObject.Find ("BloodManager").GetComponent<BloodManager>();
 	}
 
+	public void SetDeadSpeed(float sX, float sY) {
+		moveXSpeed = sX;
+		moveYSpeed = sY;
+	}
+
 	public void OnEnemyDead() {
 		isDead = true;
 		curbloodNum = 0;

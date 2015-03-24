@@ -11,6 +11,8 @@ public class Player {
 	private BoostersData _boosters = null;
 	private SkillsData _skills = null;
 
+	public PlayProperties playProperties;
+
 	private string playerDataPath;
 	private string weaponsDataPath;
 	private string boostersDataPath;
@@ -21,6 +23,8 @@ public class Player {
 	public void initPlayer() {
 		Debug.Log (Application.persistentDataPath);
 
+		playProperties = new PlayProperties ();
+
 		playerDataPath = Application.persistentDataPath + "/Player.gd";
 		weaponsDataPath = Application.persistentDataPath + "/Weapons.gd";
 		boostersDataPath = Application.persistentDataPath + "/Boosters.gd";
@@ -30,6 +34,8 @@ public class Player {
 		LoadSkillsData ();
 		LoadWeaponsData ();
 		LoadBoostersData ();
+
+		UpdatePlayPropertiesByPlayer ();
 	}
 
 	private void LoadData<DType>(string path, ref DType data) {
@@ -53,7 +59,7 @@ public class Player {
 		LoadData<PlayerData>(playerDataPath, ref _playerData);
 		CheckPlayerDataValidation ();
 	}
-	private void SavePlayerData() {
+	public void SavePlayerData() {
 		SaveData<PlayerData>(playerDataPath, _playerData);
 	}
 	// ==============================================
@@ -63,7 +69,8 @@ public class Player {
 		LoadData<SkillsData>(skillsDataPath, ref _skills);
 		CheckSkillsDataValidation ();
 	}
-	private void SaveSkillsData() {
+	public void SaveSkillsData() {
+		UpdatePlayPropertiesBySkills ();
 		SaveData<SkillsData>(skillsDataPath, _skills);
 	}
 	// ==============================================
@@ -73,7 +80,7 @@ public class Player {
 		LoadData<WeaponsData>(weaponsDataPath, ref _weapons);
 		CheckWeaponsValidation ();
 	}
-	private void SaveWeaponsData() {
+	public void SaveWeaponsData() {
 		SaveData<WeaponsData>(weaponsDataPath, _weapons);
 	}
 	// ==============================================
@@ -83,7 +90,7 @@ public class Player {
 		LoadData<BoostersData>(boostersDataPath, ref _boosters);
 		CheckBoostersValidation ();
 	}
-	private void SaveBoostersData() {
+	public void SaveBoostersData() {
 		SaveData<BoostersData>(boostersDataPath, _boosters);
 	}
 	// ==============================================
@@ -163,7 +170,27 @@ public class Player {
 		}
 
 		if (shoudSaveSkillsData) {
-			SaveSkillsData();
+			SaveSkillsData ();
+		} else {
+			UpdatePlayPropertiesBySkills ();
+		}
+	}
+
+	private void UpdatePlayPropertiesBySkills() {
+		// apply skills effections to play properties
+		foreach (int skillId in _skills.list.Keys) {
+			Global.gameSettings.skillConfigs[skillId].ApplyEffectToPlayProperty(playProperties, _skills.list[skillId].point);
+		}
+	}
+
+	private void UpdatePlayPropertiesByPlayer() {
+		playProperties.hero = Global.gameSettings.heroConfigs[_playerData.heroId];
+		playProperties.weapon = Global.gameSettings.weaponConfigs[_playerData.weaponId];
+		if (Global.gameSettings.boosterConfigs.ContainsKey(_playerData.booster1Id)) {
+			playProperties.booster1 = Global.gameSettings.boosterConfigs[_playerData.booster1Id];
+		}
+		if (Global.gameSettings.boosterConfigs.ContainsKey(_playerData.booster2Id)) {
+			playProperties.booster2 = Global.gameSettings.boosterConfigs[_playerData.booster2Id];
 		}
 	}
 
@@ -273,6 +300,7 @@ public class Player {
 		if (_playerData.heros.ContainsKey(heroId)) {
 			if (_playerData.heroId != heroId) {
 				_playerData.heroId = heroId;
+				playProperties.hero = Global.gameSettings.heroConfigs[_playerData.heroId];
 				SavePlayerData();
 			}
 		} else {
@@ -289,6 +317,8 @@ public class Player {
 	public void SetWeaponById(int weaponId) {
 		if (_weapons.list.ContainsKey(weaponId)) {
 			_playerData.weaponId = weaponId;
+			playProperties.weapon = Global.gameSettings.weaponConfigs[_playerData.weaponId];
+			SavePlayerData();
 		} else {
 			Debug.LogError("Invalidate Weapon ID!");
 		}

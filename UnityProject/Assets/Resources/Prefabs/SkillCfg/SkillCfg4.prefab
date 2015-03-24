@@ -36,12 +36,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 147060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb06f14507511ac4e8720ad39bf4dce5, type: 3}
+  m_Script: {fileID: 11500000, guid: bc7c257414326624ab6d2d56ef16bae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
   shopIcon: {fileID: 21300014, guid: 3a5b5224e5c41a54f9d062791015fc28, type: 3}
-  itemName: SmashPower
+  itemName: CriticalHit
+  levels:
+  - 1
+  - 1.20000005
+  - 1.29999995
+  - 1.39999998
+  - 1.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

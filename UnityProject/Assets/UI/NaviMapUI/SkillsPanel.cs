@@ -15,11 +15,12 @@ public class SkillsPanel : GridListPanel {
 		foreach (SkillItemConfig skillCfg in skillConfigs.Values) {
 			itemDisplay = (SkillItemDisplay)Instantiate(shopItemPrefab);
 			itemDisplay.panel = this;
+
 			itemDisplay.SetItemConfig(skillCfg);
 			itemDisplay.transform.SetParent(listContainer, false);
 
 			if (Global.player.skills.ContainsKey(skillCfg.id)) {
-				itemDisplay.numText.text = Global.player.skills[skillCfg.id].point.ToString();
+				itemDisplay.data = Global.player.skills[skillCfg.id];
 			} else {
 				Debug.LogError("Skill " + skillCfg.id + " not found!");
 			}
@@ -44,8 +45,20 @@ public class SkillsPanel : GridListPanel {
 
 	public void ClickAddSkill() {
 		if (currentSkill) {
-
+			currentSkill.AddSkill();
+			Global.player.SaveSkillsData();
 		}
+	}
+
+	public void ClickResetSkills() {
+		SkillItemDisplay itemDisplay;
+		int numChildren = listContainer.childCount;
+		for (int i = 0; i < numChildren; i++) {
+			itemDisplay = listContainer.GetChild(i).GetComponent<SkillItemDisplay>();
+			itemDisplay.RestSkill();
+		}
+
+		Global.player.SaveSkillsData();
 	}
 
 }

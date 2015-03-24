@@ -7,25 +7,26 @@ public class Geek : MonoBehaviour {
 
 	private Vector3 vect = new Vector3();
 
-	public float rotation;
 	public float speedX;
 	public float speedY;
-	public float friction;
+	public bool paused = false;
 
 	private Animator animator;
 	private float reboundRot;
 	private bool arrowHitRotation;
+	private float rotation;
 
-	public bool paused = false;
-
-	CircleCollider2D circleCollider2d;
+	private float gravity;
+	private float floorFrictionX;
+	private float floorFrictionY;
+	private CircleCollider2D circleCollider2d;
 
 	void Start () {
+		gravity = 0;
 		rotation = 0;
 		paused = false;
 		speedX = 0f;
 		speedY = 0f;
-		friction = 0.6f;
 		arrowHitRotation = false;
 
 		circleCollider2d = GetComponent<CircleCollider2D>();
@@ -39,13 +40,32 @@ public class Geek : MonoBehaviour {
 			enemy.OnEnemyDead();
 
 			if (enemy.gameObject.tag == "EnemyFloor") {
-				enemy.moveYSpeed = -0.1f;
-				enemy.moveXSpeed = gameManager.geek.speedX * 0.8f;
+				OnHitEnemyFloor();
+			} else if (enemy.gameObject.tag == "EnemyFly") {
+				enemy.SetDeadSpeed(-0.1f, gameManager.geek.speedX * 0.9f);
+				OnHitEnemyFly();
 			}
 
-			// lift up geek
-			speedY += 0.4f;
 		}
+	}
+
+	public void OnHitEnemyFloor() {
+		float rebound = Global.player.playProperties.EnemyRebound;
+		speedY += Global.ENEMY_FLOOR_X * rebound;
+		speedY += Global.ENEMY_FLOOR_Y * rebound;
+	}
+
+	public void OnHitEnemyFly() {
+		speedY += Global.ENEMY_FLY_Y * Global.player.playProperties.EnemyRebound;
+	}
+
+	public void SetGravity(float g) {
+		gravity = g;
+	}
+
+	public void SetFloorFriction(float fX, float fY) {
+		floorFrictionX = fX;
+		floorFrictionY = fY;
 	}
 
 	void Update() {
@@ -58,15 +78,14 @@ public class Geek : MonoBehaviour {
 		vect.y = transform.position.y;
 		vect.z = transform.position.z;
 		
-		speedY += gameManager.gravity;
+		speedY += gravity;
 
 		// check hit floor
 		if (vect.y - circleCollider2d.radius < floor.position.y) {
 			vect.y = floor.position.y + circleCollider2d.radius;
 
-			speedX *= friction * 0.5f;
-			speedY *= -friction;
-			// Debug.Log("spX:" + speedX + ", spY:" + speedY + ", friction:" + friction);
+			speedX *= floorFrictionX;
+			speedY *= -floorFrictionY;
 
 			vect.x += speedX;
 			vect.y += speedY;

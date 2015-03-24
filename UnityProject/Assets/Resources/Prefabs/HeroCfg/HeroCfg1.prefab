@@ -42,6 +42,12 @@ MonoBehaviour:
   id: 1
   shopIcon: {fileID: 21300000, guid: 2e694574191b7d24dbeca50b71a54aa3, type: 3}
   itemName: h1
+  angleMin: 20
+  angleMax: 60
+  criticalHitAngleMin: 0
+  criticalHitAngleMax: 60
+  hitPower: .5
+  maxHitTimes: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

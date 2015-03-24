@@ -36,12 +36,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 102338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb06f14507511ac4e8720ad39bf4dce5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0040fd947f67b3840a26996eba19e10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 5
   shopIcon: {fileID: 21300006, guid: 3a5b5224e5c41a54f9d062791015fc28, type: 3}
-  itemName: EnemyReboud
+  itemName: EnemyRebound
+  levels:
+  - .100000001
+  - .200000003
+  - .300000012
+  - .400000006
+  - .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

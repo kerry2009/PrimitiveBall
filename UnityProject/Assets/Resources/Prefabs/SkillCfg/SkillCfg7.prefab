@@ -36,12 +36,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 161372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb06f14507511ac4e8720ad39bf4dce5, type: 3}
+  m_Script: {fileID: 11500000, guid: 381246eebdd4f8e47ba33071fa789260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 7
   shopIcon: {fileID: 21300012, guid: 3a5b5224e5c41a54f9d062791015fc28, type: 3}
   itemName: EnemyAppear
+  levels:
+  - 5
+  - 4.5
+  - 4
+  - 3.5
+  - 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

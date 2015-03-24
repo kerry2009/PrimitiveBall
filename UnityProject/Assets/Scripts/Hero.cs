@@ -8,7 +8,6 @@ public class Hero : MonoBehaviour {
 	public Transform hitDivLine;
 	public Transform heroRunFloor;
 
-	private Animator animator;
 	private int currentState;
 	private int targetState;
 
@@ -16,6 +15,8 @@ public class Hero : MonoBehaviour {
 	private const int STATE_RUN = 1;
 	private const int STATE_AIRHIT = 2;
 	private const int STATE_GROUNDHIT = 3;
+
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
@@ -29,8 +30,7 @@ public class Hero : MonoBehaviour {
 
 		AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo (0);
 		if (asi.IsName("HeroRun")) {
-			heroPos.x = geek.transform.position.x;
-			heroPos.y = heroRunFloor.position.y;
+			CalcHeroRunPos(ref heroPos);
 			currentState = STATE_RUN;
 		}
 
@@ -42,8 +42,7 @@ public class Hero : MonoBehaviour {
 		}
 
 		if (currentState != targetState && targetState == STATE_GROUNDHIT) {
-			heroPos.x = geek.transform.position.x;
-			heroPos.y = heroRunFloor.position.y;
+			CalcHeroRunPos(ref heroPos);
 			currentState = STATE_GROUNDHIT;
 			targetState = STATE_RUN;
 		}
@@ -51,19 +50,48 @@ public class Hero : MonoBehaviour {
 		transform.position = heroPos;
 	}
 
+	public void CalcHeroRunPos(ref Vector3 heroPos) {
+		float speedX = (geek.transform.position.x - transform.position.x);
+
+		if (geek.speedX >= 5.0f) {
+			speedX *= 0.001f;
+		} else {
+			speedX *= 0.2f;
+		}
+
+		heroPos.x += speedX;
+		heroPos.x -= 0.1f;
+		heroPos.y = heroRunFloor.position.y;
+	}
+
 	public void hit() {
 		// air hit
 		if (geek.transform.position.y > hitDivLine.position.y) {
-			geek.speedX = 0.8f;
-			geek.speedY = -0.5f;
+			SmashAir();
 			playAirHit();
 		} else { // ground hit
-			geek.speedX += 0.5f;
-			geek.speedY += 0.5f;
+			SmashGround();
 			playGroundHit();
 		}
 
 		geek.SetArrowHit (true);
+	}
+
+	private void SmashGround() {
+		float pow = Global.player.playProperties.WeaponPower * Global.player.playProperties.SmashPower;
+
+		geek.speedX += pow * Global.SMASH_GROUND_X + Global.SMASH_GROUND_X;
+
+		if (geek.speedY >= 0) {
+			geek.speedY += pow * Global.SMASH_GROUND_Y + Global.SMASH_GROUND_Y;
+		} else {
+			geek.speedY -= pow * Global.SMASH_GROUND_Y + Global.SMASH_GROUND_Y;
+		}
+	}
+
+	private void SmashAir() {
+		geek.speedX += Global.player.playProperties.WeaponPower * Global.player.playProperties.SmashPower * Global.SMASH_AIR_X + Global.SMASH_AIR_X;
+		geek.speedY = Global.SMASH_AIR_Y;
 	}
 
 	public void PlayHeroStand() {

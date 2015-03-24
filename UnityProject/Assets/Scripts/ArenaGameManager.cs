@@ -6,14 +6,11 @@ public class ArenaGameManager : MonoBehaviour {
 	public Hero hero;
 
 	public Camera mainCamera;
-
 	public GameObject cameraRestrictCorner;
 
-	public Animator HeroAnimator;
 	public Animator FlashScreen;
-
-	public bool gameOvered = false;
-	public int gameModePhrase = 0;
+	public bool gameOvered;
+	public int gameModePhrase;
 
 	public Transform bgBack;
 	public Transform bgMiddle;
@@ -33,23 +30,17 @@ public class ArenaGameManager : MonoBehaviour {
 	public float bgMidScrollRatio = 0.5f;
 	public float bgBackScrollRatio = 0.1f;
 
-	private float firstHitPower;
-	private float firstHitAngle;
-
-	public const int MAX_HIT_ANGLE = 60;
-	public const int MIN_HIT_ANGLE = 0;
-	public const float RESET_SPEED = 0.025f;
-
 	private Vector2 lastCameraPos;
 
-	public float gravity;
-
+	public EnemySpawner[] EnemyGenSpawners;
 	public Transform skyVanishiStart;
 	public Transform skyVanishiEnd;
 	public bool resposeMouseClick;
 
 	void Start() {
-		gravity = 0f;
+		gameOvered = false;
+		gameModePhrase = 0;
+
 		resposeMouseClick = true;
 		lastCameraPos = new Vector2 (mainCamera.transform.position.x, mainCamera.transform.position.y);
 
@@ -57,6 +48,15 @@ public class ArenaGameManager : MonoBehaviour {
 		powerMeter.easeIn ();
 
 		hero.PlayHeroStand ();
+
+		InitEnemySpawners ();
+	}
+
+	private void InitEnemySpawners() {
+		float spawnDist = Global.player.playProperties.EnemyAppear;
+		foreach (EnemySpawner es in EnemyGenSpawners) {
+			es.spawnXDist = spawnDist;
+		}
 	}
 
 	// Update is called once per frame
@@ -157,9 +157,11 @@ public class ArenaGameManager : MonoBehaviour {
 		gameModePhrase = 1;
 		
 		powerMeter.StopRunCursor ();
-		firstHitPower = powerMeter.GetPercentage();
-		
 		powerMeter.easeOut ();
+
+		HeroItemConfig heroCfg = Global.player.playProperties.hero;
+		angleMeter.InitMeter (1f, heroCfg.angleMin, heroCfg.angleMax);
+
 		angleMeter.CursorRun ();
 		angleMeter.easeIn ();
 
@@ -170,8 +172,6 @@ public class ArenaGameManager : MonoBehaviour {
 		gameModePhrase = 2;
 		
 		angleMeter.StopRunCursor ();
-		firstHitAngle = angleMeter.GetPercentage();
-		
 		angleMeter.easeOut ();
 		
 		hitGeekFirst ();
@@ -183,11 +183,16 @@ public class ArenaGameManager : MonoBehaviour {
 		FlashScreen.gameObject.SetActive (true);
 		showFlashScreen ();
 
-		float hitAngleInRadian = (MIN_HIT_ANGLE + firstHitAngle * MAX_HIT_ANGLE) * (Mathf.PI / 180);
+		PlayProperties pp = Global.player.playProperties;
 
-		gravity = -0.01f;
-		geek.speedX = Mathf.Cos (hitAngleInRadian) * firstHitPower;
-		geek.speedY = Mathf.Sin (hitAngleInRadian) * firstHitPower;
+		float hitAngle = angleMeter.GetPercentage();
+		float firstHitPower = pp.GetFirstHitPower (hitAngle) * powerMeter.GetPercentage();
+		float firstHitAngle = hitAngle * (Mathf.PI / 180);
+
+		geek.SetFloorFriction (pp.FloorFriction, pp.FloorFriction);
+		geek.SetGravity(Global.GRIVATY);
+		geek.speedX = Mathf.Cos (firstHitAngle) * firstHitPower;
+		geek.speedY = Mathf.Sin (firstHitAngle) * firstHitPower;
 
 		geek.SetArrowHit (true);
 	}

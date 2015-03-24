@@ -36,12 +36,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 169398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb06f14507511ac4e8720ad39bf4dce5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c40913afd0004a4989ab91d28891462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
   shopIcon: {fileID: 21300004, guid: 3a5b5224e5c41a54f9d062791015fc28, type: 3}
   itemName: FloorFriction
+  levels:
+  - .200000003
+  - .300000012
+  - .400000006
+  - .5
+  - .600000024
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 50df8a1c0b6a8fe46abd8d0d5b7f7283
-timeCreated: 1426656262
+timeCreated: 1427217523
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -29,6 +29,9 @@ TextureImporter:
     21300044: hero_hit_footr_3
     21300046: hero_hit_armr_4_1
     21300048: hero_hit_armr_4_2
+    21300050: hero_groundhit_body
+    21300052: hero_groundhit_arml
+    21300054: hero_groundhit_armr
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -323,6 +326,36 @@ TextureImporter:
         height: 40
       alignment: 9
       pivot: {x: .699999988, y: .200000003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_groundhit_body
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 254
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_groundhit_arml
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 189
+        width: 40
+        height: 60
+      alignment: 9
+      pivot: {x: .649999976, y: .649999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_groundhit_armr
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 102
+        width: 40
+        height: 80
+      alignment: 9
+      pivot: {x: .449999988, y: .200000003}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

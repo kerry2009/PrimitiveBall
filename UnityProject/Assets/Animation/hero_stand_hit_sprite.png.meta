@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 50df8a1c0b6a8fe46abd8d0d5b7f7283
-timeCreated: 1427217523
+timeCreated: 1427343544
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -32,6 +32,7 @@ TextureImporter:
     21300050: hero_groundhit_body
     21300052: hero_groundhit_arml
     21300054: hero_groundhit_armr
+    21300056: hero_groundhit_footr
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -356,6 +357,16 @@ TextureImporter:
         height: 80
       alignment: 9
       pivot: {x: .449999988, y: .200000003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hero_groundhit_footr
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 59
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

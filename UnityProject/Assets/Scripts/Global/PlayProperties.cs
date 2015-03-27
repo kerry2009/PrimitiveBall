@@ -19,7 +19,7 @@ public class PlayProperties {
 	public float GetFirstHitPower(float angle) {
 		float p = WeaponPower * SmashPower;
 		if (angle >= hero.criticalHitAngleMin && angle <= hero.criticalHitAngleMax) {
-			p *= _criticalHit;
+			p *= 1.5f;
 		}
 		return p;
 	}

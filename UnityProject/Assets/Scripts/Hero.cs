@@ -11,6 +11,7 @@ public class Hero : MonoBehaviour {
 
 	private int currentState;
 	private int targetState;
+	private float speedX;
 
 	private const int STATE_IDLE = 0;
 	private const int STATE_RUN = 1;
@@ -19,6 +20,7 @@ public class Hero : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		speedX = 0;
 		currentState = STATE_IDLE;
 		targetState = STATE_IDLE;
 	}
@@ -32,33 +34,41 @@ public class Hero : MonoBehaviour {
 			currentState = STATE_RUN;
 		}
 
-		if (currentState != targetState && targetState == STATE_AIRHIT) {
-			heroPos.x = geek.transform.position.x;
-			heroPos.y = geek.transform.position.y;
-			currentState = STATE_AIRHIT;
-			targetState = STATE_RUN;
-		}
-
 		if (currentState != targetState && targetState == STATE_GROUNDHIT) {
 			CalcHeroRunPos(ref heroPos);
 			currentState = STATE_GROUNDHIT;
 			targetState = STATE_RUN;
 		}
 
+		if (currentState != targetState && targetState == STATE_AIRHIT) {
+			heroPos.x = geek.transform.position.x;
+			heroPos.y = geek.transform.position.y;
+			currentState = STATE_AIRHIT;
+			targetState = STATE_RUN;
+			speedX = 0;
+		}
+
+		heroPos.x += speedX;
 		transform.position = heroPos;
 	}
 
 	public void CalcHeroRunPos(ref Vector3 heroPos) {
-		float speedX = (geek.transform.position.x - transform.position.x);
+		float dist = geek.transform.position.x - transform.position.x;
 
-		if (geek.speedX >= 5.0f) {
-			speedX *= 0.001f;
+		if (dist >= 0) {
+			if (dist >= 4.0f) {
+				speedX = dist * 0.5f;
+			} else {
+				speedX = 0.2f;
+			}
+
+			if (speedX > dist) {
+				speedX = dist;
+			}
 		} else {
-			speedX *= 0.2f;
+			speedX = 0;
 		}
 
-		heroPos.x += speedX;
-		heroPos.x -= 0.1f;
 		heroPos.y = heroRunFloor.position.y;
 	}
 
@@ -83,7 +93,7 @@ public class Hero : MonoBehaviour {
 		if (geek.speedY >= 0) {
 			geek.speedY += pow * Global.SMASH_GROUND_Y + Global.SMASH_GROUND_Y;
 		} else {
-			geek.speedY -= pow * Global.SMASH_GROUND_Y + Global.SMASH_GROUND_Y;
+			geek.speedY = (pow * Global.SMASH_GROUND_Y + Global.SMASH_GROUND_Y) + geek.speedY * -1.0f;
 		}
 	}
 

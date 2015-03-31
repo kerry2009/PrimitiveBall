@@ -4,10 +4,10 @@ using System.Collections;
 public class MovableGameObject : MonoBehaviour {
 	public float moveXSpeed = 0f;
 	public float moveYSpeed = 0f;
+	public bool isDead = false;
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame

@@ -23,8 +23,7 @@ public class ArenaGameManager : MonoBehaviour {
 
 	public Transform followObject;
 
-	public PowerMeter powerMeter;
-	public AngleMeter angleMeter;
+	public HitMeter meter;
 
 	public float bgFrontScrollRatio = 1.0f;
 	public float bgMidScrollRatio = 0.5f;
@@ -37,6 +36,10 @@ public class ArenaGameManager : MonoBehaviour {
 	public Transform skyVanishiEnd;
 	public bool resposeMouseClick;
 
+	void Awake() {
+		Application.targetFrameRate = 60;
+	}
+
 	void Start() {
 		gameOvered = false;
 		gameModePhrase = 0;
@@ -44,10 +47,13 @@ public class ArenaGameManager : MonoBehaviour {
 		resposeMouseClick = true;
 		lastCameraPos = new Vector2 (mainCamera.transform.position.x, mainCamera.transform.position.y);
 
-		powerMeter.CursorRun ();
-		powerMeter.easeIn ();
+		HeroItemConfig heroCfg = Global.player.playProperties.hero;
+		meter.InitMeter (0.5f, heroCfg.angleMin, heroCfg.angleMax);
+		meter.RunAngleCursor ();
+		meter.easeIn ();
 
 		hero.PlayHeroStand ();
+		geek.PlayIdle ();
 
 		InitEnemySpawners ();
 	}
@@ -155,15 +161,9 @@ public class ArenaGameManager : MonoBehaviour {
 
 	private void selectedPower() {
 		gameModePhrase = 1;
-		
-		powerMeter.StopRunCursor ();
-		powerMeter.easeOut ();
 
-		HeroItemConfig heroCfg = Global.player.playProperties.hero;
-		angleMeter.InitMeter (1f, heroCfg.angleMin, heroCfg.angleMax);
-
-		angleMeter.CursorRun ();
-		angleMeter.easeIn ();
+		meter.StopAngleCursor ();
+		meter.RunPowerCursor ();
 
 		hero.PlayHeroReady ();
 	}
@@ -171,9 +171,9 @@ public class ArenaGameManager : MonoBehaviour {
 	private void selectAngleAndHit() {
 		gameModePhrase = 2;
 		
-		angleMeter.StopRunCursor ();
-		angleMeter.easeOut ();
-		
+		meter.StopPowerCursor ();
+		meter.easeOut ();
+
 		hitGeekFirst ();
 	}
 
@@ -185,8 +185,8 @@ public class ArenaGameManager : MonoBehaviour {
 
 		PlayProperties pp = Global.player.playProperties;
 
-		float hitAngle = angleMeter.GetPercentage();
-		float firstHitPower = pp.GetFirstHitPower (hitAngle) * powerMeter.GetPercentage();
+		float hitAngle = meter.GetAnglePercentage ();
+		float firstHitPower = pp.GetFirstHitPower (hitAngle) * meter.GetPowerPercentage ();
 		float firstHitAngle = hitAngle * (Mathf.PI / 180);
 
 		geek.SetFloorFriction (pp.FloorFriction, pp.FloorFriction);

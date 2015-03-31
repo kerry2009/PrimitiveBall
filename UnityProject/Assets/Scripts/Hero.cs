@@ -4,7 +4,6 @@ using System.Collections;
 public class Hero : MonoBehaviour {
 
 	public ArenaGameManager gameManager;
-	public Animator animator;
 	public Geek geek;
 	public Transform hitDivLine;
 	public Transform heroRunFloor;
@@ -12,11 +11,16 @@ public class Hero : MonoBehaviour {
 	private int currentState;
 	private int targetState;
 	private float speedX;
+	private Animator animator;
 
 	private const int STATE_IDLE = 0;
 	private const int STATE_RUN = 1;
 	private const int STATE_AIRHIT = 2;
 	private const int STATE_GROUNDHIT = 3;
+
+	void Awake() {
+		animator = GetComponent<Animator> ();
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -30,25 +34,28 @@ public class Hero : MonoBehaviour {
 
 		AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo (0);
 		if (asi.IsName("HeroRun")) {
-			CalcHeroRunPos(ref heroPos);
-			currentState = STATE_RUN;
+			if (currentState != STATE_RUN) {
+				heroPos.x = geek.transform.position.x;
+				heroPos.y = heroRunFloor.position.y;
+				currentState = STATE_RUN;
+			} else {
+				CalcHeroRunPos(ref heroPos);
+			}
 		}
 
-		if (currentState != targetState && targetState == STATE_GROUNDHIT) {
-			CalcHeroRunPos(ref heroPos);
-			currentState = STATE_GROUNDHIT;
-			targetState = STATE_RUN;
+		if (currentState != targetState) {
+			if (targetState == STATE_GROUNDHIT) {
+				CalcHeroRunPos(ref heroPos);
+				currentState = STATE_GROUNDHIT;
+				targetState = STATE_RUN;
+			} else if (targetState == STATE_AIRHIT) {
+				heroPos.x = geek.transform.position.x;
+				heroPos.y = geek.transform.position.y;
+				currentState = STATE_AIRHIT;
+				targetState = STATE_RUN;
+			}
 		}
 
-		if (currentState != targetState && targetState == STATE_AIRHIT) {
-			heroPos.x = geek.transform.position.x;
-			heroPos.y = geek.transform.position.y;
-			currentState = STATE_AIRHIT;
-			targetState = STATE_RUN;
-			speedX = 0;
-		}
-
-		heroPos.x += speedX;
 		transform.position = heroPos;
 	}
 
@@ -56,10 +63,14 @@ public class Hero : MonoBehaviour {
 		float dist = geek.transform.position.x - transform.position.x;
 
 		if (dist >= 0) {
-			if (dist >= 4.0f) {
-				speedX = dist * 0.5f;
+			if (geek.speedX <= 0.3f) {
+				speedX = 0.3f;
+			} else if (dist >= 5.0f) {
+				speedX = geek.speedX + 0.1f;
+			} else if (dist < 4.9f) {
+				speedX = geek.speedX - 0.1f;
 			} else {
-				speedX = 0.2f;
+				speedX = geek.speedX;
 			}
 
 			if (speedX > dist) {
@@ -69,6 +80,7 @@ public class Hero : MonoBehaviour {
 			speedX = 0;
 		}
 
+		heroPos.x += speedX;
 		heroPos.y = heroRunFloor.position.y;
 	}
 

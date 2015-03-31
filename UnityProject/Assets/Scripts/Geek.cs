@@ -4,7 +4,6 @@ using System.Collections;
 public class Geek : MonoBehaviour {
 	public Transform floor;
 	public ArenaGameManager gameManager;
-	public Animator animator;
 
 	private Vector3 vect = new Vector3();
 
@@ -19,7 +18,14 @@ public class Geek : MonoBehaviour {
 	private float gravity;
 	private float floorFrictionX;
 	private float floorFrictionY;
+
+	private Animator animator;
 	private CircleCollider2D circleCollider2d;
+
+	void Awake() {
+		animator = GetComponent<Animator>();
+		circleCollider2d = GetComponent<CircleCollider2D>();
+	}
 
 	void Start () {
 		gravity = 0;
@@ -28,8 +34,6 @@ public class Geek : MonoBehaviour {
 		speedX = 0f;
 		speedY = 0f;
 		arrowHitRotation = false;
-
-		circleCollider2d = GetComponent<CircleCollider2D>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -41,7 +45,7 @@ public class Geek : MonoBehaviour {
 			if (enemy.gameObject.tag == "EnemyFloor") {
 				OnHitEnemyFloor();
 			} else if (enemy.gameObject.tag == "EnemyFly") {
-				enemy.SetDeadSpeed(-0.1f, gameManager.geek.speedX * 0.9f);
+				enemy.SetDeadSpeed(gameManager.geek.speedX * 0.9f, gameManager.geek.speedY * 0.9f);
 				OnHitEnemyFly();
 			}
 
@@ -95,13 +99,13 @@ public class Geek : MonoBehaviour {
 				rotation = 0;
 				if (!gameManager.gameOvered) {
 					gameManager.gameOver();
-					playDeadAnimation();
+					PlayDeadAnimation();
 				}
 			} else {
 				arrowHitRotation = false;
 				// hit floor and rotation
 				CallFloorRebound();
-				playFlyAnimation(Random.Range(2, 5));
+				PlayFlyAnimation(Random.Range(2, 5));
 			}
 		} else {
 			vect.x += speedX;
@@ -129,7 +133,7 @@ public class Geek : MonoBehaviour {
 
 	public void SetArrowHit(bool isArrowHitRot) {
 		arrowHitRotation = isArrowHitRot;
-		playFlyAnimation (1);
+		PlayFlyAnimation (1);
 	}
 
 	private void CallFloorRebound() {
@@ -137,12 +141,16 @@ public class Geek : MonoBehaviour {
 		reboundRot = (speedX * speedX + speedY * speedY) * 100f;
 	}
 
-	public void playFlyAnimation(int state) {
+	public void PlayFlyAnimation(int state) {
 		animator.Play ("GeekFly" + state);
 	}
 
-	public void playDeadAnimation() {
+	public void PlayDeadAnimation() {
 		animator.Play ("GeekDead" + Random.Range(1, 3));
+	}
+
+	public void PlayIdle() {
+		animator.Play ("GeekIdle");
 	}
 
 }

@@ -8,16 +8,14 @@ public delegate void CallBack();
 public enum TweenProperties : short {
 	position = 	1 << 0,
 	localPosition = 	1 << 1,
+	localScale = 		1 << 2,
 
-	scale = 		1 << 2,
-	localScale = 		1 << 3,
+	rotation = 	1 << 3,
+	localRotation = 	1 << 4,
 
-	rotation = 	1 << 4,
-	localRotation = 	1 << 5,
+	alpha = 		1 << 5,
 
-	alpha = 		1 << 6,
-
-	all = position | localPosition | scale | localScale | rotation | localRotation | alpha
+	all = position | localPosition | localScale | rotation | localRotation | alpha
 }
 
 public enum TweenRestricts : short {
@@ -58,21 +56,6 @@ public class TweenLite : MonoBehaviour {
 					tweenObjects.RemoveAt(i);
 				}
 			}
-		}
-	}
-
-	public static void To(Transform tweener, Transform toValue, float duration, TweenRestricts restrict, Ease ease, CallBack OnComplete, bool yoyo) {
-		if (tweener.position != toValue.position) {
-			To(tweener, TweenProperties.position, tweener.position, toValue.position, duration, restrict, ease, OnComplete, yoyo);
-		}
-
-		if (tweener.localScale != toValue.localScale) {
-			To(tweener, TweenProperties.scale, tweener.localScale, toValue.localScale, duration, restrict, ease, OnComplete, yoyo);
-		}
-
-		if (tweener.rotation != toValue.rotation) {
-			To(tweener, TweenProperties.rotation, new Vector3(tweener.rotation.x, tweener.rotation.y, tweener.rotation.z),
-			   new Vector3(toValue.rotation.x, toValue.rotation.y, toValue.rotation.z), duration, restrict, ease, OnComplete, yoyo);
 		}
 	}
 
@@ -191,7 +174,7 @@ class TweenLiteObject {
 			v3.Set(vect.x, vect.y, vect.z);
 			tweener.localPosition = v3;
 			break;
-		case TweenProperties.scale:
+		case TweenProperties.localScale:
 			v3 = tweener.localScale;
 			v3.Set(vect.x, vect.y, vect.z);
 			tweener.localScale = vect;

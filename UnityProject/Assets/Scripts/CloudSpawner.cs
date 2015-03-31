@@ -12,6 +12,7 @@ public class CloudSpawner : RangeSpawner {
 
 	protected override void OnInitObject (MovableGameObject movable) {
 		movable.moveXSpeed = -0.01f;
+		movable.moveYSpeed = 0;
 	}
 
 	protected override void OnSetParent (MovableGameObject movable, Vector3 mp) {

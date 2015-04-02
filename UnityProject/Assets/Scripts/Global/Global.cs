@@ -3,17 +3,17 @@ using System.Collections;
 
 public class Global : MonoBehaviour {
 	// Game constants
-	public const float GRIVATY = -0.01f;
+	public const float GRIVATY = -0.008f;
 
-	public const float SMASH_GROUND_X = 0.5f;
-	public const float SMASH_GROUND_Y = 0.6f;
+	public const float SMASH_GROUND_X = 1f;
+	public const float SMASH_GROUND_Y = 1.5f;
 	
-	public const float SMASH_AIR_X = 0.6f;
-	public const float SMASH_AIR_Y = -1.0f;
+	public const float SMASH_AIR_X = 1.5f;
+	public const float SMASH_AIR_Y = -2f;
 
-	public const float ENEMY_FLOOR_X = 0.5f;
-	public const float ENEMY_FLOOR_Y = 0.5f;
-	public const float ENEMY_FLY_Y = 0.8f;
+	public const float ENEMY_FLOOR_X = 1f;
+	public const float ENEMY_FLOOR_Y = -0.8f;
+	public const float ENEMY_FLY_Y = -2.5f;
 
 	// instances
 	private static GameSettings _gs = null;

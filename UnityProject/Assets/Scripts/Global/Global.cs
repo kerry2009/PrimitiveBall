@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Global : MonoBehaviour {
 	// Game constants
-	public const float GRIVATY = -0.008f;
+	public const float GRIVATY = -0.003f;
 
 	public const float SMASH_GROUND_X = 1f;
 	public const float SMASH_GROUND_Y = 1.5f;
@@ -12,8 +12,8 @@ public class Global : MonoBehaviour {
 	public const float SMASH_AIR_Y = -2f;
 
 	public const float ENEMY_FLOOR_X = 1f;
-	public const float ENEMY_FLOOR_Y = -0.8f;
-	public const float ENEMY_FLY_Y = -2.5f;
+	public const float ENEMY_FLOOR_Y = 1.5f;
+	public const float ENEMY_FLY_Y = 2.5f;
 
 	// instances
 	private static GameSettings _gs = null;

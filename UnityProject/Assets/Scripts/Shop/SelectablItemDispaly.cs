@@ -14,8 +14,6 @@ public class SelectablItemDispaly : MonoBehaviour {
 	public Image unselectedBG;
 	protected int status = STATUS_UNSELECTED;
 
-	private UnityAction<Button> buttonClick;
-
 	void Start() {
 		if (clickButton) {
 			clickButton.onClick.AddListener(() => ButtonClickItem());

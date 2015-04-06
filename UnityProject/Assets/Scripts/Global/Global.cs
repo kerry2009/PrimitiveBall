@@ -18,6 +18,7 @@ public class Global : MonoBehaviour {
 	// instances
 	private static GameSettings _gs = null;
 	private static Player _player = null;
+	private static GlobalNative _native = null;
 
 	public static GameSettings gameSettings {
 		get {
@@ -36,6 +37,15 @@ public class Global : MonoBehaviour {
 				_player.initPlayer();
 			}
 			return _player;
+		}
+	}
+
+	public static GlobalNative native {
+		get {
+			if (_native == null) {
+				_native = new GlobalNative();
+			}
+			return _native;
 		}
 	}
 

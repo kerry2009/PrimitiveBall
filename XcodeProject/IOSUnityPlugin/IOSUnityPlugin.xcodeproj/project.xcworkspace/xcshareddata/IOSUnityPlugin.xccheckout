@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>79C55D6C-83A1-43D6-AC6D-EBD4B671C7B6</string>
+	<key>IDESourceControlProjectName</key>
+	<string>IOSUnityPlugin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FCBBD6B61C155C47C02DABAB78D222D7A3FF4B3F</key>
+		<string>https://github.com/kerry2009/PrimitiveBall.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>XcodeProject/IOSUnityPlugin/IOSUnityPlugin.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FCBBD6B61C155C47C02DABAB78D222D7A3FF4B3F</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kerry2009/PrimitiveBall.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FCBBD6B61C155C47C02DABAB78D222D7A3FF4B3F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FCBBD6B61C155C47C02DABAB78D222D7A3FF4B3F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PrimitiveBall</string>
+		</dict>
+	</array>
+</dict>
+</plist>

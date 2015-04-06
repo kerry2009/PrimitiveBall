@@ -2,8 +2,14 @@
 using System.Collections;
 using UnityEngine.Advertisements;
 using UnityEngine.SocialPlatforms;
+using System.Runtime.InteropServices;
 
 public class GlobalNative {
+
+
+	[DllImport("__Internal")]
+	extern static public void popupAlert(string message);
+
 	public const string Ad_ID = "29338";
 
 	private bool isSignedGameCenterer;
@@ -16,7 +22,7 @@ public class GlobalNative {
 		isGameCenterSigning = false;
 	}
 
-	public void InitNatives() {
+	public void InitUnityAds() {
 		if (Advertisement.isSupported) {
 			Debug.Log("Advertisement is Supported!");
 			Advertisement.Initialize(Ad_ID, false);
@@ -27,13 +33,22 @@ public class GlobalNative {
 		if (!isGameCenterSigning) {
 			if (!isSignedGameCenterer) {
 				isGameCenterSigning = true;
-				Social.localUser.Authenticate (GameCenterAuthenticated);
+				Social.localUser.Authenticate (OnGameCenterAuthenticated);
 			}
 		}
 	}
 
+	public void PushNotification() {
+		NotificationPusher.NotificationMessage("Welcome to play primitive ball every day in 10 sec", System.DateTime.Now.AddSeconds(10), false);
+	}
+
+	public void ShowAds() {
+		Advertisement.Show ();
+	}
+
 	public void ShowLeaderBoard() {
 		isLeaderBoard = true;
+
 		if (!isGameCenterSigning && isSignedGameCenterer) {
 			Social.ShowLeaderboardUI();
 		}
@@ -43,7 +58,7 @@ public class GlobalNative {
 		Social.ReportScore (score, leaderBoardGroupId, null);
 	}
 
-	private void GameCenterAuthenticated (bool success) {
+	private void OnGameCenterAuthenticated (bool success) {
 		isSignedGameCenterer = success;
 		isGameCenterSigning = false;
 
@@ -55,6 +70,11 @@ public class GlobalNative {
 		} else {
 			Debug.Log ("Failed to authenticate GameCenter!");
 		}
+	}
+
+	public void PopupAlert(string msg) {
+		// pop alert
+		popupAlert (msg);
 	}
 
 }

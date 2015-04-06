@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		44489AF11AD2F99600F726F0 /* IOSUnityPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 44489AF01AD2F99600F726F0 /* IOSUnityPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		44489AF71AD2F99600F726F0 /* IOSUnityPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44489AEB1AD2F99600F726F0 /* IOSUnityPlugin.framework */; };
+		44489AFE1AD2F99600F726F0 /* IOSUnityPluginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44489AFD1AD2F99600F726F0 /* IOSUnityPluginTests.m */; };
+		44489B101AD2FA4500F726F0 /* PopupAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 44489B0E1AD2FA4500F726F0 /* PopupAlert.h */; };
+		44489B111AD2FA4500F726F0 /* PopupAlert.mm in Sources */ = {isa = PBXBuildFile; fileRef = 44489B0F1AD2FA4500F726F0 /* PopupAlert.mm */; };
+		44489B131AD2FA9800F726F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44489B121AD2FA9800F726F0 /* Foundation.framework */; };
+		44489B151AD2FA9F00F726F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44489B141AD2FA9F00F726F0 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44489AF81AD2F99600F726F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44489AE21AD2F99600F726F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44489AEA1AD2F99600F726F0;
+			remoteInfo = IOSUnityPlugin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		44489AEB1AD2F99600F726F0 /* IOSUnityPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IOSUnityPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44489AEF1AD2F99600F726F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44489AF01AD2F99600F726F0 /* IOSUnityPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSUnityPlugin.h; sourceTree = "<group>"; };
+		44489AF61AD2F99600F726F0 /* IOSUnityPluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSUnityPluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44489AFC1AD2F99600F726F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44489AFD1AD2F99600F726F0 /* IOSUnityPluginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSUnityPluginTests.m; sourceTree = "<group>"; };
+		44489B0E1AD2FA4500F726F0 /* PopupAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupAlert.h; sourceTree = "<group>"; };
+		44489B0F1AD2FA4500F726F0 /* PopupAlert.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PopupAlert.mm; sourceTree = "<group>"; };
+		44489B121AD2FA9800F726F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		44489B141AD2FA9F00F726F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		44489AE71AD2F99600F726F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44489B151AD2FA9F00F726F0 /* UIKit.framework in Frameworks */,
+				44489B131AD2FA9800F726F0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44489AF31AD2F99600F726F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44489AF71AD2F99600F726F0 /* IOSUnityPlugin.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		44489AE11AD2F99600F726F0 = {
+			isa = PBXGroup;
+			children = (
+				44489B141AD2FA9F00F726F0 /* UIKit.framework */,
+				44489B121AD2FA9800F726F0 /* Foundation.framework */,
+				44489B0D1AD2FA4500F726F0 /* source */,
+				44489AED1AD2F99600F726F0 /* IOSUnityPlugin */,
+				44489AFA1AD2F99600F726F0 /* IOSUnityPluginTests */,
+				44489AEC1AD2F99600F726F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		44489AEC1AD2F99600F726F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44489AEB1AD2F99600F726F0 /* IOSUnityPlugin.framework */,
+				44489AF61AD2F99600F726F0 /* IOSUnityPluginTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		44489AED1AD2F99600F726F0 /* IOSUnityPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				44489AF01AD2F99600F726F0 /* IOSUnityPlugin.h */,
+				44489AEE1AD2F99600F726F0 /* Supporting Files */,
+			);
+			path = IOSUnityPlugin;
+			sourceTree = "<group>";
+		};
+		44489AEE1AD2F99600F726F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44489AEF1AD2F99600F726F0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44489AFA1AD2F99600F726F0 /* IOSUnityPluginTests */ = {
+			isa = PBXGroup;
+			children = (
+				44489AFD1AD2F99600F726F0 /* IOSUnityPluginTests.m */,
+				44489AFB1AD2F99600F726F0 /* Supporting Files */,
+			);
+			path = IOSUnityPluginTests;
+			sourceTree = "<group>";
+		};
+		44489AFB1AD2F99600F726F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				44489AFC1AD2F99600F726F0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		44489B0D1AD2FA4500F726F0 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				44489B0E1AD2FA4500F726F0 /* PopupAlert.h */,
+				44489B0F1AD2FA4500F726F0 /* PopupAlert.mm */,
+			);
+			path = source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		44489AE81AD2F99600F726F0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44489B101AD2FA4500F726F0 /* PopupAlert.h in Headers */,
+				44489AF11AD2F99600F726F0 /* IOSUnityPlugin.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		44489AEA1AD2F99600F726F0 /* IOSUnityPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44489B011AD2F99600F726F0 /* Build configuration list for PBXNativeTarget "IOSUnityPlugin" */;
+			buildPhases = (
+				44489AE61AD2F99600F726F0 /* Sources */,
+				44489AE71AD2F99600F726F0 /* Frameworks */,
+				44489AE81AD2F99600F726F0 /* Headers */,
+				44489AE91AD2F99600F726F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IOSUnityPlugin;
+			productName = IOSUnityPlugin;
+			productReference = 44489AEB1AD2F99600F726F0 /* IOSUnityPlugin.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		44489AF51AD2F99600F726F0 /* IOSUnityPluginTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44489B041AD2F99600F726F0 /* Build configuration list for PBXNativeTarget "IOSUnityPluginTests" */;
+			buildPhases = (
+				44489AF21AD2F99600F726F0 /* Sources */,
+				44489AF31AD2F99600F726F0 /* Frameworks */,
+				44489AF41AD2F99600F726F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44489AF91AD2F99600F726F0 /* PBXTargetDependency */,
+			);
+			name = IOSUnityPluginTests;
+			productName = IOSUnityPluginTests;
+			productReference = 44489AF61AD2F99600F726F0 /* IOSUnityPluginTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		44489AE21AD2F99600F726F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = KerryYang;
+				TargetAttributes = {
+					44489AEA1AD2F99600F726F0 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2VW7W3K2U4;
+					};
+					44489AF51AD2F99600F726F0 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 44489AE51AD2F99600F726F0 /* Build configuration list for PBXProject "IOSUnityPlugin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 44489AE11AD2F99600F726F0;
+			productRefGroup = 44489AEC1AD2F99600F726F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				44489AEA1AD2F99600F726F0 /* IOSUnityPlugin */,
+				44489AF51AD2F99600F726F0 /* IOSUnityPluginTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		44489AE91AD2F99600F726F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44489AF41AD2F99600F726F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44489AE61AD2F99600F726F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44489B111AD2FA4500F726F0 /* PopupAlert.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44489AF21AD2F99600F726F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44489AFE1AD2F99600F726F0 /* IOSUnityPluginTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		44489AF91AD2F99600F726F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44489AEA1AD2F99600F726F0 /* IOSUnityPlugin */;
+			targetProxy = 44489AF81AD2F99600F726F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		44489AFF1AD2F99600F726F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		44489B001AD2F99600F726F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		44489B021AD2F99600F726F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IOSUnityPlugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		44489B031AD2F99600F726F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IOSUnityPlugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		44489B051AD2F99600F726F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IOSUnityPluginTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		44489B061AD2F99600F726F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = IOSUnityPluginTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		44489AE51AD2F99600F726F0 /* Build configuration list for PBXProject "IOSUnityPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44489AFF1AD2F99600F726F0 /* Debug */,
+				44489B001AD2F99600F726F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44489B011AD2F99600F726F0 /* Build configuration list for PBXNativeTarget "IOSUnityPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44489B021AD2F99600F726F0 /* Debug */,
+				44489B031AD2F99600F726F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		44489B041AD2F99600F726F0 /* Build configuration list for PBXNativeTarget "IOSUnityPluginTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44489B051AD2F99600F726F0 /* Debug */,
+				44489B061AD2F99600F726F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 44489AE21AD2F99600F726F0 /* Project object */;
+}

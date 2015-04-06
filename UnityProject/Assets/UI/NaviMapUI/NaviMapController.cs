@@ -15,6 +15,9 @@ public class NaviMapController : MonoBehaviour {
 		skillPanel.gameObject.SetActive (false);
 		weaponPanel.gameObject.SetActive (false);
 		forgePanel.gameObject.SetActive (false);
+
+		Global.native.InitUnityAds ();
+		Global.native.LoginGameCenter ();
 	}
 
 	public void OnClickPlay () {
@@ -27,6 +30,22 @@ public class NaviMapController : MonoBehaviour {
 
 	public void HideNaviMap () {
 		naviMapPanel.SetActive (false);
+	}
+
+	public void ShowAds() {
+		Global.native.ShowAds ();
+	}
+
+	public void ShowLeaderboard() {
+		Global.native.ShowLeaderBoard ();
+	}
+
+	public void PopupNativeAlert() {
+		Global.native.PopupAlert ("Hello from primitive ball!");
+	}
+
+	public void PushNotification() {
+		Global.native.PushNotification ();
 	}
 
 }

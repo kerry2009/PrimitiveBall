@@ -88,8 +88,8 @@ public class Geek : MonoBehaviour {
 			speedX *= floorFrictionX;
 			speedY *= -floorFrictionY;
 
-			vect.x += speedX;
-			vect.y += speedY;
+			vect.x += speedX * 0.1f;
+			vect.y += speedY * 0.1f;
 
 			// check is dead
 			if (speedX < 0.005f) {
@@ -106,8 +106,8 @@ public class Geek : MonoBehaviour {
 				PlayFlyAnimation(Random.Range(2, 5));
 			}
 		} else {
-			vect.x += speedX;
-			vect.y += speedY;
+			vect.x += speedX * 0.1f;
+			vect.y += speedY * 0.1f;
 		}
 
 		transform.position = vect;

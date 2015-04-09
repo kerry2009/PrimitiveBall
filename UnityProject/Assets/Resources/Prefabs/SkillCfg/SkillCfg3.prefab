@@ -43,7 +43,7 @@ MonoBehaviour:
   shopIcon: {fileID: 21300004, guid: 3a5b5224e5c41a54f9d062791015fc28, type: 3}
   itemName: FloorFriction
   levels:
-  - .5
+  - 1
   - .550000012
   - .600000024
   - .649999976

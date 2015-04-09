@@ -24,7 +24,7 @@ public class InfiniteScrollBackground : MonoBehaviour {
 	public void MoveBackground (float scrollSpeedX, float scrollSpeedY, float ratioX, float ratioY) {
 		Vector3 pos = transform.position;
 		pos.x += scrollSpeedX;
-		pos.y += scrollSpeedY * ratioY;
+		pos.y += scrollSpeedY * (1f - ratioY);
 		if (pos.y < backGroundBottom) {
 			pos.y = backGroundBottom;
 		}

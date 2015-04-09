@@ -88,7 +88,7 @@ public class BackgroundManager : MonoBehaviour {
 		GroupMove (clouds, offsetX, 0);
 		GroupMove (enemyGenerator, offsetX, 0);
 
-		ScrollStarsBG (offsetX * Global.bgStarsScrollX, offsetY * Global.bgStarsScrollX);
+		ScrollStarsBG (offsetX * Global.bgStarsScrollX, offsetY * Global.bgStarsScrollY);
 	}
 
 	private void GroupMove(Transform bgTrans, float offsetX, float offsetY) {

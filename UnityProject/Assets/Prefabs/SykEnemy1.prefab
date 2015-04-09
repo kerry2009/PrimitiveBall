@@ -75,7 +75,6 @@ MonoBehaviour:
   moveXSpeed: 0
   moveYSpeed: 0
   isDead: 0
-  bloodManager: {fileID: 0}
 --- !u!212 &21242988
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -98,7 +97,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1377554575
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300038, guid: ff42fd479da08214188e86d3bdfe6fb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -43,3 +43,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: SkyLayer
+    uniqueID: 1931056457
+    locked: 0
+  - name: BackCloudsLayer
+    uniqueID: 375365103
+    locked: 0
+  - name: BackgroundsLayer
+    uniqueID: 2915972021
+    locked: 0
+  - name: EnemysLayer
+    uniqueID: 1377554575
+    locked: 0
+  - name: GeekLayer
+    uniqueID: 2713349505
+    locked: 0
+  - name: HeroLayer
+    uniqueID: 3796868185
+    locked: 0
+  - name: FrontCloudsLayer
+    uniqueID: 3385561701
+    locked: 0
+  - name: BloodsLayer
+    uniqueID: 4211428735
+    locked: 0

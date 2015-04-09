@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 
 public class GlobalNative {
 
-
 	[DllImport("__Internal")]
 	extern static public void popupAlert(string message);
 

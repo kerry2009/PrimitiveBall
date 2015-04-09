@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Enemy : MovableGameObject {
 	private static BloodManager bloodManager = null;
-
 	public const int BLOOD_GEN_MAX = 20;
+
 	private int curbloodNum = 0;
 	private Animator animator;
 
@@ -36,18 +36,7 @@ public class Enemy : MovableGameObject {
 
 			if (curbloodNum < BLOOD_GEN_MAX) {
 
-				GameObject blood = bloodManager.getBlood();
-				
-				Vector3 bloodPos = blood.transform.position;
-				bloodPos.x = transform.position.x;
-				bloodPos.y = transform.position.y;
-				bloodPos.z = bloodManager.bloodContainer.position.z;
-				
-				blood.transform.position = bloodPos;
-				blood.transform.SetParent(bloodManager.bloodContainer, false);
-				
-				Animator bloodAnimator = blood.GetComponent<Animator> ();
-				bloodAnimator.Play("BloodEnemyDie", 0, 0f);
+				bloodManager.AddBlood(transform.position);
 				
 				curbloodNum++;
 

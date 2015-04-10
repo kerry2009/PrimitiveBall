@@ -19,9 +19,9 @@ public class ArenaHUD : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 geekPos = geek.transform.position;
-		hudSpeedText.text = ((int)(geek.speedX * 100)).ToString() + " m/h";
-		hudDistanceText.text = ((int)(geekPos.x * 100)).ToString() + " m";
-		hudHeightText.text = ((int)(geekPos.y * 100)).ToString() + " m";
+		hudSpeedText.text = ((int)(geek.speedX)).ToString() + " m/h";
+		hudDistanceText.text = ((int)(geekPos.x)).ToString() + " m";
+		hudHeightText.text = ((int)(geekPos.y)).ToString() + " m";
 	}
 
 }

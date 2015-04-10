@@ -52,8 +52,12 @@ public class Geek : MonoBehaviour {
 
 	public void OnHitEnemyFloor() {
 		float rebound = Global.player.playProperties.EnemyRebound;
-		speedY += Global.ENEMY_FLOOR_X * rebound;
-		speedY += Global.ENEMY_FLOOR_Y * rebound;
+		speedX += Global.ENEMY_FLOOR_X * rebound;
+		if (speedY <= 0) {
+			speedY += Global.ENEMY_FLOOR_ADD_Y * rebound;
+		} else {
+			speedY += Global.ENEMY_FLOOR_Y * rebound;
+		}
 	}
 
 	public void OnHitEnemyFly() {
@@ -77,9 +81,6 @@ public class Geek : MonoBehaviour {
 
 		speedY += gravity;
 		Vector3 vect = transform.position;
-
-//		speedX = 0.8f;
-//		speedY = 0f;
 
 		// check hit floor
 		if (vect.y - circleCollider2d.radius < floor.position.y) {

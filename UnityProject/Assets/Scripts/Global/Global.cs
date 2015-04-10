@@ -13,6 +13,7 @@ public class Global : MonoBehaviour {
 
 	public const float ENEMY_FLOOR_X = 1f;
 	public const float ENEMY_FLOOR_Y = 1.5f;
+	public const float ENEMY_FLOOR_ADD_Y = 1.5f;
 	public const float ENEMY_FLY_Y = 2.5f;
 
 	public const float bgFrontScrollX = 1.0f;

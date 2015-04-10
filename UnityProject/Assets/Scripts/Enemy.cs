@@ -15,6 +15,14 @@ public class Enemy : MovableGameObject {
 		animator = GetComponent<Animator>();
 	}
 
+	public override void OnInit () {
+		curbloodNum = 0;
+
+		moveXSpeed = 0;
+		moveYSpeed = 0;
+		isDead = false;
+	}
+
 	public void SetDeadSpeed(float sX, float sY) {
 		moveXSpeed = sX;
 		moveYSpeed = sY;

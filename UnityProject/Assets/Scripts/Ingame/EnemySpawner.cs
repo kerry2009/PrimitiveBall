@@ -4,9 +4,8 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour {
 	public MovableGameObject[] profabs; // Array of prefabs.
-
 	public float spawnXDist;
-	
+
 	public Transform rangeTopPoint;
 	public Transform leftEdge;
 	public Transform rightEdge;
@@ -48,19 +47,15 @@ public class EnemySpawner : MonoBehaviour {
 				spawnedObjects.RemoveAt(i);
 			}
 		}
-		
+
 		if (transform.position.x - oldSpawnX > spawnXDist) {
 			oldSpawnX = transform.position.x;
 			SpawnGameObject();
 		}
 	}
-	
-	protected void SpawnGameObject() {
-		Spawn(OnSpawnObject(), rangeTopPoint);
-	}
-	
+
 	private static Quaternion zeroRotation = new Quaternion();
-	protected virtual MovableGameObject OnSpawnObject() {
+	protected void SpawnGameObject() {
 		MovableGameObject mobj;
 		
 		if (outScreenObjects.Count > 0) {
@@ -71,26 +66,24 @@ public class EnemySpawner : MonoBehaviour {
 			int randIndex = Random.Range(0, profabs.Length);
 			mobj = Instantiate(profabs[randIndex], transform.position, zeroRotation)  as MovableGameObject;
 		}
-		
-		mobj.gameObject.SetActive (true);
-		return mobj;
+
+		Spawn(mobj, rangeTopPoint);
 	}
 
 	protected void Spawn(MovableGameObject mobj, Transform endTopPoint) {
 		// set Spawn point (random y)
-		Vector3 p = transform.position;
+		Vector3 p = mobj.transform.position;
+		p.x = transform.position.x;
 		p.y = Random.Range(transform.position.y, endTopPoint.position.y);
-		transform.position = p;
-		mobj.transform.SetParent (container, false);
+		mobj.transform.position = p;
 
-		OnInitObject (mobj);
-		mobj.isDead = false;
+		// init enemy
+		mobj.OnInit ();
+		mobj.moveXSpeed = Random.Range (0.1f, 0.5f);
+		mobj.transform.SetParent (container, false);
+		mobj.gameObject.SetActive (true);
+
 		spawnedObjects.Add(mobj);
-	}
-	
-	protected void OnInitObject(MovableGameObject movable) {
-		movable.moveXSpeed = Random.Range (0.1f, 0.5f);
-		movable.moveYSpeed = 0;
 	}
 
 }

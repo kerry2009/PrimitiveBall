@@ -105,7 +105,7 @@ public class Hero : MonoBehaviour {
 		if (geek.speedY >= 0) {
 			geek.speedY += pow * Global.SMASH_GROUND_Y + Global.SMASH_GROUND_Y;
 		} else {
-			geek.speedY = (pow * Global.SMASH_GROUND_Y + Global.SMASH_GROUND_Y) + geek.speedY * -1.0f;
+			geek.speedY = (pow * Global.SMASH_GROUND_Y + Global.SMASH_GROUND_Y) - geek.speedY;
 		}
 	}
 

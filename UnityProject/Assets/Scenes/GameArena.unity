@@ -727,7 +727,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 128551479}
   - 212: {fileID: 128551480}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1562,7 +1562,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 361323470}
   - 114: {fileID: 361323471}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FloorEnemyGen
   m_TagString: Untagged
   m_Icon: {fileID: 8467475693731670952, guid: 0000000000000000d000000000000000, type: 0}
@@ -1576,7 +1576,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 361323469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.7700005, y: -15.2799997, z: 0}
+  m_LocalPosition: {x: 10.6000004, y: -15.3000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1925304866}
@@ -1827,7 +1827,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 479639594}
   - 212: {fileID: 479639591}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2339,7 +2339,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 606391974}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: back_imgs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2853,7 +2853,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 697987242}
   - 212: {fileID: 697987243}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2907,7 +2907,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 700210531}
   - 114: {fileID: 700210532}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SkyEnemyGen1
   m_TagString: Untagged
   m_Icon: {fileID: 8467475693731670952, guid: 0000000000000000d000000000000000, type: 0}
@@ -2921,7 +2921,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 700210530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.75, y: -.970000029, z: 0}
+  m_LocalPosition: {x: 10.6999998, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1925304866}
@@ -3167,7 +3167,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 792385854}
   - 212: {fileID: 792385855}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: bg_sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3446,7 +3446,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 848832922}
   - 212: {fileID: 848832923}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3554,7 +3554,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 860659224}
   - 212: {fileID: 860659225}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3827,7 +3827,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 947177018}
   - 212: {fileID: 947177019}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4461,7 +4461,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1133561844}
   - 212: {fileID: 1133561841}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4542,7 +4542,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1145888260}
   - 114: {fileID: 1145888261}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SkyEnemyGen3
   m_TagString: Untagged
   m_Icon: {fileID: 8467475693731670952, guid: 0000000000000000d000000000000000, type: 0}
@@ -4556,7 +4556,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1145888259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.73999977, y: 16.2000008, z: 0}
+  m_LocalPosition: {x: 10.6000004, y: 16.2000008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1925304866}
@@ -4901,7 +4901,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1250110711}
   - 212: {fileID: 1250110709}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5343,7 +5343,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1381345935}
   - 114: {fileID: 1381345936}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Backgrounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5728,7 +5728,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1493789233}
   - 212: {fileID: 1493789234}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6085,7 +6085,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1569512650}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SkyEnemyGen4
   m_TagString: Untagged
   m_Icon: {fileID: 8467475693731670952, guid: 0000000000000000d000000000000000, type: 0}
@@ -6099,7 +6099,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1569512649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.13000011, y: 31.8999996, z: 0}
+  m_LocalPosition: {x: 11, y: 31.8999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1925304866}
@@ -6638,7 +6638,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1689277475}
   - 114: {fileID: 1689277476}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SkyEnemyGen2
   m_TagString: Untagged
   m_Icon: {fileID: 8467475693731670952, guid: 0000000000000000d000000000000000, type: 0}
@@ -6652,7 +6652,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1689277474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.69999981, y: 6.38999987, z: 0}
+  m_LocalPosition: {x: 10.6000004, y: 6.4000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1925304866}
@@ -7911,7 +7911,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1975210241}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: p_floor
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -8534,7 +8534,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2137314883}
   - 114: {fileID: 2137314884}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: bg_backs
   m_TagString: Untagged
   m_Icon: {fileID: 0}

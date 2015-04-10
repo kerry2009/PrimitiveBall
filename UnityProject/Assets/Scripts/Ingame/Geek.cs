@@ -16,6 +16,8 @@ public class Geek : MonoBehaviour {
 	private float gravity;
 	private float floorFrictionX;
 	private float floorFrictionY;
+	private float floorY;
+	private float startX;
 
 	private Animator animator;
 	private CircleCollider2D circleCollider2d;
@@ -32,6 +34,9 @@ public class Geek : MonoBehaviour {
 		speedX = 0f;
 		speedY = 0f;
 		arrowHitRotation = false;
+
+		startX = transform.position.x;
+		floorY = floor.position.y;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -41,16 +46,16 @@ public class Geek : MonoBehaviour {
 			enemy.OnEnemyDead();
 
 			if (enemy.gameObject.tag == "EnemyFloor") {
-				OnHitEnemyFloor();
+				OnHitFloorEnemy();
 			} else if (enemy.gameObject.tag == "EnemyFly") {
-				enemy.SetDeadSpeed(gameManager.geek.speedX * 0.9f, gameManager.geek.speedY * 0.9f);
-				OnHitEnemyFly();
+				enemy.SetDeadSpeed(enemy.moveXSpeed * 0.9f, -0.9f);
+				OnHitFlyEnemy();
 			}
 
 		}
 	}
 
-	public void OnHitEnemyFloor() {
+	private void OnHitFloorEnemy() {
 		float rebound = Global.player.playProperties.EnemyRebound;
 		speedX += Global.ENEMY_FLOOR_X * rebound;
 		if (speedY <= 0) {
@@ -60,7 +65,7 @@ public class Geek : MonoBehaviour {
 		}
 	}
 
-	public void OnHitEnemyFly() {
+	private void OnHitFlyEnemy() {
 		speedY += Global.ENEMY_FLY_Y * Global.player.playProperties.EnemyRebound;
 	}
 
@@ -83,8 +88,8 @@ public class Geek : MonoBehaviour {
 		Vector3 vect = transform.position;
 
 		// check hit floor
-		if (vect.y - circleCollider2d.radius < floor.position.y) {
-			vect.y = floor.position.y + circleCollider2d.radius;
+		if (vect.y - circleCollider2d.radius < floorY) {
+			vect.y = floorY + circleCollider2d.radius;
 
 			speedX *= floorFrictionX;
 			speedY *= -floorFrictionY;
@@ -94,7 +99,7 @@ public class Geek : MonoBehaviour {
 
 			// check is dead
 			if (speedX < 0.005f) {
-				vect.y = floor.position.y + circleCollider2d.radius;
+				vect.y = floorY + circleCollider2d.radius;
 				rotation = 0;
 				if (!gameManager.gameOvered) {
 					gameManager.gameOver();
@@ -151,6 +156,18 @@ public class Geek : MonoBehaviour {
 
 	public void PlayIdle() {
 		animator.Play ("GeekIdle");
+	}
+
+	public float Height {
+		get {
+			return transform.position.y - floorY;
+		}
+	}
+
+	public float Distance {
+		get {
+			return transform.position.x - startX;
+		}
 	}
 
 }

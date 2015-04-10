@@ -11,6 +11,12 @@ public class MovableGameObject : MonoBehaviour {
 		OnUpdate ();
 	}
 
+	public virtual void OnInit() {
+		moveXSpeed = 0;
+		moveYSpeed = 0;
+		isDead = false;
+	}
+
 	protected virtual void OnUpdate() {
 		Vector3 tranPos = transform.position;
 		tranPos.x += moveXSpeed;

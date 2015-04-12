@@ -19,11 +19,11 @@ public class Global : MonoBehaviour {
 	public const float bgFrontScrollX = 0.1f;
 	public const float bgFrontScrollY = 1f;
 
-	public const float bgMidScrollX = 0.05f;
-	public const float bgMidScrollY = 0.05f;
+	public const float bgMidScrollX = 0.025f;
+	public const float bgMidScrollY = 0.025f;
 
-	public const float bgBackScrollX = 0.001f;
-	public const float bgBackScrollY = 0.001f;
+	public const float bgBackScrollX = 0.01f;
+	public const float bgBackScrollY = 0.01f;
 
 	public const float bgStarsScrollX = 0.0001f;
 	public const float bgStarsScrollY = 0.0001f;

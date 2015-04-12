@@ -17,6 +17,8 @@ public class BackgroundManager : MonoBehaviour {
 
 	public Transform skyVanishiStart;
 	public Transform skyVanishiEnd;
+	public SpriteRenderer skyRenderer;
+	public Transform geekTransform;
 
 	private Vector2 lastCameraPos;
 	private float limitLeft;
@@ -31,19 +33,18 @@ public class BackgroundManager : MonoBehaviour {
 	}
 
 	void Update() {
-		Vector3 skyPos = bgSky.transform.position;
-		if (skyPos.y > skyVanishiStart.position.y) {
-			SpriteRenderer sr = bgSky.GetComponent<SpriteRenderer> ();
-			Color skyColor = sr.color;
+		Vector3 geekPos = geekTransform.position;
+		if (geekPos.y > skyVanishiStart.position.y) {
+			Color skyColor = skyRenderer.color;
 			
-			if (skyPos.y > skyVanishiEnd.position.y) {
+			if (geekPos.y > skyVanishiEnd.position.y) {
 				skyColor.a = 0f;
 			} else {
-				float diff = (skyPos.y - skyVanishiStart.position.y) / (skyVanishiEnd.position.y - skyVanishiStart.position.y);
+				float diff = (geekPos.y - skyVanishiStart.position.y) / (skyVanishiEnd.position.y - skyVanishiStart.position.y);
 				skyColor.a = 1f - diff;
 			}
 			
-			sr.color = skyColor;
+			skyRenderer.color = skyColor;
 		} else {
 			SpriteRenderer sr = bgSky.GetComponent<SpriteRenderer> ();
 			Color skyColor = sr.color;
@@ -84,7 +85,7 @@ public class BackgroundManager : MonoBehaviour {
 		bgBack.MoveBackground (offsetX, offsetY, Global.bgBackScrollX, Global.bgBackScrollY);
 
 		GroupMove (bgStars, offsetX, offsetY);
-		GroupMove (bgSky, offsetX, offsetY);
+		GroupMove (bgSky, offsetX, 0);
 		GroupMove (clouds, offsetX, 0);
 		GroupMove (enemyGenerator, offsetX, 0);
 

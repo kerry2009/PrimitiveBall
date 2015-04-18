@@ -16,8 +16,8 @@ public class Geek : MonoBehaviour {
 	private float gravity;
 	private float floorFrictionX;
 	private float floorFrictionY;
-	private float floorY;
 	private float startX;
+	private float startFloorY;
 
 	private Animator animator;
 	private CircleCollider2D circleCollider2d;
@@ -36,37 +36,23 @@ public class Geek : MonoBehaviour {
 		arrowHitRotation = false;
 
 		startX = transform.position.x;
-		floorY = floor.position.y;
+		startFloorY = floor.position.y;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		Enemy enemy = other.gameObject.GetComponent<Enemy> ();
 
 		if (enemy && !enemy.isDead) {
+			enemy.OnHit(this);
 			enemy.OnEnemyDead();
 
 			if (enemy.gameObject.tag == "EnemyFloor") {
-				OnHitFloorEnemy();
+				enemy.SetDeadSpeed(enemy.moveXSpeed * 0.9f, 0);
 			} else if (enemy.gameObject.tag == "EnemyFly") {
 				enemy.SetDeadSpeed(enemy.moveXSpeed * 0.9f, -0.9f);
-				OnHitFlyEnemy();
 			}
 
 		}
-	}
-
-	private void OnHitFloorEnemy() {
-		float rebound = Global.player.playProperties.EnemyRebound;
-		speedX += Global.ENEMY_FLOOR_X * rebound;
-		if (speedY <= 0) {
-			speedY += Global.ENEMY_FLOOR_ADD_Y * rebound;
-		} else {
-			speedY += Global.ENEMY_FLOOR_Y * rebound;
-		}
-	}
-
-	private void OnHitFlyEnemy() {
-		speedY += Global.ENEMY_FLY_Y * Global.player.playProperties.EnemyRebound;
 	}
 
 	public void SetGravity(float g) {
@@ -83,6 +69,7 @@ public class Geek : MonoBehaviour {
 			SetGeekRotation (-rotation);
 			return;
 		}
+		float floorY = floor.position.y;
 
 		speedY += gravity;
 		Vector3 vect = transform.position;
@@ -160,7 +147,7 @@ public class Geek : MonoBehaviour {
 
 	public float Height {
 		get {
-			return transform.position.y - floorY;
+			return transform.position.y - startFloorY;
 		}
 	}
 

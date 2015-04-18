@@ -3,7 +3,9 @@ using System.Collections;
 
 public class EnemyFly : Enemy {
 
-	override protected void UpdateEnemyPos() {
+	public float reboundY;
+
+	override protected void OnMove() {
 		Vector3 tranPos = transform.position;
 		tranPos.x += moveXSpeed;
 		
@@ -13,6 +15,10 @@ public class EnemyFly : Enemy {
 
 		tranPos.y += moveYSpeed;
 		transform.position = tranPos;
+	}
+
+	override public void OnHit(Geek geek) {
+		geek.speedY += reboundY * Global.player.playProperties.EnemyRebound;
 	}
 
 }

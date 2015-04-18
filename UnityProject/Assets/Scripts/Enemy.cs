@@ -2,30 +2,49 @@
 using System.Collections;
 
 public class Enemy : MovableGameObject {
-	private static BloodManager bloodManager = null;
 	public const int BLOOD_GEN_MAX = 20;
+	public int gainCash;
+	public float createRate;
 
+	private static BloodManager bloodManager = null;
 	private int curbloodNum = 0;
-	private Animator animator;
+	private Animator _animator;
 
 	void Awake() {
 		if (bloodManager == null) {
 			bloodManager = GameObject.Find ("BloodManager").GetComponent<BloodManager>();
 		}
-		animator = GetComponent<Animator>();
 	}
 
-	public override void OnInit () {
-		curbloodNum = 0;
+	public virtual void OnHit(Geek geek) {
+	}
 
+	public void OnInit () {
+		curbloodNum = 0;
 		moveXSpeed = 0;
 		moveYSpeed = 0;
 		isDead = false;
+
+		moveXSpeed = Random.Range (0.1f, 0.3f);
+		gameObject.SetActive (true);
 	}
 
 	public void SetDeadSpeed(float sX, float sY) {
 		moveXSpeed = sX;
 		moveYSpeed = sY;
+	}
+
+	public Animator animator {
+		get {
+			if (_animator == null) {
+				_animator = GetComponent<Animator>();
+			}
+			return _animator;
+		}
+		set {
+			_animator = value;
+			_animator.Play ("EnemyRun");
+		}
 	}
 
 	public void OnEnemyDead() {
@@ -34,11 +53,11 @@ public class Enemy : MovableGameObject {
 		curbloodNum = 0;
 	}
 
-	protected virtual void UpdateEnemyPos() {
+	protected virtual void OnMove() {
 	}
 
 	public void Update() {
-		UpdateEnemyPos ();
+		OnMove ();
 
 		if (isDead && bloodManager) {
 

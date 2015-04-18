@@ -1,42 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &120318
+--- !u!1 &114516
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 420318}
-  - 212: {fileID: 21220318}
-  - 95: {fileID: 9520318}
-  - 114: {fileID: 11422810}
-  - 58: {fileID: 5833708}
+  - 4: {fileID: 459778}
+  - 212: {fileID: 21242986}
+  - 95: {fileID: 9597490}
+  - 114: {fileID: 11444018}
+  - 58: {fileID: 5823444}
   m_Layer: 0
-  m_Name: FloorEnemy1
+  m_Name: FloorEnemy2
   m_TagString: EnemyFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &420318
+--- !u!4 &459778
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120318}
+  m_GameObject: {fileID: 114516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.9500008, y: 20.4399986, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!58 &5833708
+--- !u!58 &5823444
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120318}
+  m_GameObject: {fileID: 114516}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -44,13 +44,13 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .300000012
---- !u!95 &9520318
+--- !u!95 &9597490
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120318}
+  m_GameObject: {fileID: 114516}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: bc7b2da331ede5547b94b94c8286b010, type: 2}
@@ -61,12 +61,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11422810
+--- !u!114 &11444018
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120318}
+  m_GameObject: {fileID: 114516}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58fe16371b58d204286fa846b59fb914, type: 3}
@@ -76,16 +76,16 @@ MonoBehaviour:
   moveYSpeed: 0
   isDead: 0
   gainCash: 0
-  createRate: .100000001
+  createRate: .5
   reboundX: 1
   reboundY: 1
   reboundUpY: 1.5
---- !u!212 &21220318
+--- !u!212 &21242986
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120318}
+  m_GameObject: {fileID: 114516}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: 1377554575
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a144e6b185c50984cb526fa35dc6c11d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -115,5 +115,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 120318}
+  m_RootGameObject: {fileID: 114516}
   m_IsPrefabParent: 1

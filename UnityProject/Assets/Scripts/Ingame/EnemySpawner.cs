@@ -3,22 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour {
-	public MovableGameObject[] profabs; // Array of prefabs.
+	public Enemy[] prefabs; // Array of prefabs.
 	public float spawnXDist;
 
-	public Transform rangeTopPoint;
 	public Transform leftEdge;
 	public Transform rightEdge;
 	public Transform container;
 	
-	protected List<MovableGameObject> spawnedObjects;
-	protected List<MovableGameObject> outScreenObjects;
+	protected List<Enemy> spawnedObjects;
+	protected List<Enemy> outScreenObjects;
 
 	private float oldSpawnX = 0f;
 
-	public EnemySpawner() {
-		spawnedObjects = new List<MovableGameObject> ();
-		outScreenObjects = new List<MovableGameObject> ();
+	void Awake() {
+		spawnedObjects = new List<Enemy> ();
+		outScreenObjects = new List<Enemy> ();
 	}
 	
 	// Update is called once per frame
@@ -38,52 +37,51 @@ public class EnemySpawner : MonoBehaviour {
 			right = int.MaxValue;
 		}
 		
-		MovableGameObject mobj;
+		Enemy enemy;
 		for (int i = len - 1; i >= 0; i--) {
-			mobj = spawnedObjects[i];
-			if (mobj.transform.position.x < left || mobj.transform.position.x > right) {
-				mobj.gameObject.SetActive (false);
-				outScreenObjects.Add(mobj);
+			enemy = spawnedObjects[i];
+			if (enemy.transform.position.x < left || enemy.transform.position.x > right) {
+				enemy.gameObject.SetActive (false);
+				outScreenObjects.Add(enemy);
 				spawnedObjects.RemoveAt(i);
 			}
 		}
 
 		if (transform.position.x - oldSpawnX > spawnXDist) {
 			oldSpawnX = transform.position.x;
-			SpawnGameObject();
+			OnSpawnEnemies();
 		}
+	}
+
+	protected virtual void OnSpawnEnemies() {
 	}
 
 	private static Quaternion zeroRotation = new Quaternion();
-	protected void SpawnGameObject() {
-		MovableGameObject mobj;
-		
-		if (outScreenObjects.Count > 0) {
-			mobj = outScreenObjects[0];
-			outScreenObjects.RemoveAt(0);
-		} else {
-			// Instantiate a random enemy.
-			int randIndex = Random.Range(0, profabs.Length);
-			mobj = Instantiate(profabs[randIndex], transform.position, zeroRotation)  as MovableGameObject;
+	protected void SpawnEnemy(float spawnPosX, float spawnPosY) {
+		foreach (Enemy prefabEnemy in prefabs) {
+			if (Random.value <= prefabEnemy.createRate) {
+				Enemy enemy;
+
+				if (outScreenObjects.Count > 0) {
+					enemy = outScreenObjects[0];
+					outScreenObjects.RemoveAt(0);
+
+					enemy.animator = prefabEnemy.animator;
+				} else {
+					enemy = Instantiate(prefabEnemy, transform.position, zeroRotation)  as Enemy;
+				}
+
+				Vector3 p = enemy.transform.position;
+				p.x = spawnPosX;
+				p.y = spawnPosY;
+				enemy.transform.position = p;
+
+				// init enemy
+				enemy.OnInit ();
+				enemy.transform.SetParent (container, false);
+				spawnedObjects.Add(enemy);
+			}
 		}
-
-		Spawn(mobj, rangeTopPoint);
-	}
-
-	protected void Spawn(MovableGameObject mobj, Transform endTopPoint) {
-		// set Spawn point (random y)
-		Vector3 p = mobj.transform.position;
-		p.x = transform.position.x;
-		p.y = Random.Range(transform.position.y, endTopPoint.position.y);
-		mobj.transform.position = p;
-
-		// init enemy
-		mobj.OnInit ();
-		mobj.moveXSpeed = Random.Range (0.1f, 0.5f);
-		mobj.transform.SetParent (container, false);
-		mobj.gameObject.SetActive (true);
-
-		spawnedObjects.Add(mobj);
 	}
 
 }

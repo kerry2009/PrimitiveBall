@@ -11,6 +11,7 @@ public class WeaponItemDisplay : SelectablItemDispaly {
 	public void SetItemConfig(WeaponItemConfig ic) {
 		itemConfig = ic;
 		placeHolder.sprite = itemConfig.shopIcon;
+		OnUnequip ();
 	}
 
 	public override void OnClickItem () {

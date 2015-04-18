@@ -38,9 +38,9 @@ public class HitMeter : MonoBehaviour {
 		              speed, TweenRestricts.z, null, null, true);
 	}
 
-	void Update() {
+	void LateUpdate() {
 		if (isAngleRun) {
-			float curAngle = cursor.transform.localRotation.z * 180 / Mathf.PI;
+			float curAngle = cursor.transform.localRotation.eulerAngles.z;
 			if (curAngle >= criticalAngleMin && curAngle <= criticalAngleMax) {
 				cursorImg.color = Color.grey;
 			} else {

@@ -12,6 +12,7 @@ public class Hero : MonoBehaviour {
 	private int targetState;
 	private float speedX;
 	private Animator animator;
+	private float floorY;
 
 	private const int STATE_IDLE = 0;
 	private const int STATE_RUN = 1;
@@ -20,6 +21,7 @@ public class Hero : MonoBehaviour {
 
 	void Awake() {
 		animator = GetComponent<Animator> ();
+		floorY = heroRunFloor.position.y;
 	}
 
 	// Use this for initialization
@@ -36,7 +38,7 @@ public class Hero : MonoBehaviour {
 		if (asi.IsName("HeroRun")) {
 			if (currentState != STATE_RUN) {
 				heroPos.x = geek.transform.position.x;
-				heroPos.y = heroRunFloor.position.y;
+				heroPos.y = floorY;
 				currentState = STATE_RUN;
 			} else {
 				CalcHeroRunPos(ref heroPos);
@@ -81,7 +83,7 @@ public class Hero : MonoBehaviour {
 		}
 
 		heroPos.x += speedX;
-		heroPos.y = heroRunFloor.position.y;
+		heroPos.y = floorY;
 	}
 
 	public void hit() {

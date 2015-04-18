@@ -2,12 +2,25 @@
 using System.Collections;
 
 public class EnemyFloor : Enemy {
+	public float reboundX;
+	public float reboundY;
+	public float reboundUpY;
 
-	override protected void UpdateEnemyPos() {
+	override protected void OnMove() {
 		Vector3 tranPos = transform.position;
 		tranPos.x += moveXSpeed;
 		tranPos.y += moveYSpeed;
 		transform.position = tranPos;
+	}
+
+	override public void OnHit(Geek geek) {
+		float rebound = Global.player.playProperties.EnemyRebound;
+		geek.speedX += reboundX * rebound;
+		if (geek.speedY <= 0) {
+			geek.speedY += reboundUpY * rebound;
+		} else {
+			geek.speedY += reboundY * rebound;
+		}
 	}
 
 }

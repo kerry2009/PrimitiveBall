@@ -70,3 +70,6 @@ TagManager:
   - name: BloodsLayer
     uniqueID: 4211428735
     locked: 0
+  - name: HitSpawnerLayer
+    uniqueID: 2405237725
+    locked: 0

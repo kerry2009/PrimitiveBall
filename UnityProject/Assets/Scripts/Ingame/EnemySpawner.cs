@@ -67,6 +67,11 @@ public class EnemySpawner : MonoBehaviour {
 					outScreenObjects.RemoveAt(0);
 
 					enemy.animator = prefabEnemy.animator;
+
+					// debug only
+					SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
+					sr.color = prefabEnemy.GetComponent<SpriteRenderer>().color;
+
 				} else {
 					enemy = Instantiate(prefabEnemy, transform.position, zeroRotation)  as Enemy;
 				}

@@ -8,7 +8,6 @@ public class InfiniteScrollBackground : MonoBehaviour {
 	private float resetLeft;
 	private float curLeft;
 	private float imageSizeX;
-	private float backGroundBottom;
 
 	// Use this for initialization
 	void Start () {
@@ -17,17 +16,12 @@ public class InfiniteScrollBackground : MonoBehaviour {
 		imageSizeX = sr.bounds.extents.x * 2;
 		resetLeft = head.localPosition.x;
 		curLeft = resetLeft;
-
-		backGroundBottom = transform.position.y;
 	}
 
 	public void MoveBackground (float scrollSpeedX, float scrollSpeedY, float ratioX, float ratioY) {
 		Vector3 pos = transform.position;
 		pos.x += scrollSpeedX;
 		pos.y += scrollSpeedY * (1f - ratioY);
-		if (pos.y < backGroundBottom) {
-			pos.y = backGroundBottom;
-		}
 		transform.position = pos;
 
 		Vector3 imagesVect = imgs.transform.localPosition;

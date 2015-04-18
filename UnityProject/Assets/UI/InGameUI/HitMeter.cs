@@ -40,7 +40,8 @@ public class HitMeter : MonoBehaviour {
 
 	void LateUpdate() {
 		if (isAngleRun) {
-			float curAngle = cursor.transform.localRotation.eulerAngles.z;
+			float curAngle = ((int)(cursor.transform.localRotation.eulerAngles.z * 100f)) / 100f;
+
 			if (curAngle >= criticalAngleMin && curAngle <= criticalAngleMax) {
 				cursorImg.color = Color.grey;
 			} else {

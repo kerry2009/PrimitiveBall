@@ -43,7 +43,7 @@ MonoBehaviour:
   shopIcon: {fileID: 21300006, guid: 3a5b5224e5c41a54f9d062791015fc28, type: 3}
   itemName: EnemyRebound
   levels:
-  - 1
+  - 5
   - 2
   - 3
   - 4

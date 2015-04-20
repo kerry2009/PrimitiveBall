@@ -43,7 +43,7 @@ MonoBehaviour:
   shopIcon: {fileID: 21300012, guid: 3a5b5224e5c41a54f9d062791015fc28, type: 3}
   itemName: EnemyAppear
   levels:
-  - 5
+  - 1
   - 4.5
   - 4
   - 3.5

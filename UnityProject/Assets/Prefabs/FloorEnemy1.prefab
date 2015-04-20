@@ -76,7 +76,7 @@ MonoBehaviour:
   moveYSpeed: 0
   isDead: 0
   gainCoins: 10
-  createRate: .100000001
+  createRate: .0500000007
   reboundX: 1
   reboundY: 1
   reboundUpY: 1.5

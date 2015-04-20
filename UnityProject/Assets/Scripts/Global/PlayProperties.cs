@@ -64,4 +64,10 @@ public class PlayProperties {
 		}
 	}
 
+	public float AddXpCoins {
+		get {
+			return _addXpCoins;
+		}
+	}
+
 }

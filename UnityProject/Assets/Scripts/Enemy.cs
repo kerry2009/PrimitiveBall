@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Enemy : MovableGameObject {
 	public const int BLOOD_GEN_MAX = 20;
-	public int gainCash;
+	public float gainCoins;
 	public float createRate;
 
 	private static BloodManager bloodManager = null;
@@ -17,6 +17,10 @@ public class Enemy : MovableGameObject {
 	}
 
 	public virtual void OnHit(Geek geek) {
+	}
+
+	public void OnAddCoins() {
+		Global.player.coins += (int)(gainCoins * Global.player.playProperties.AddXpCoins);
 	}
 
 	public void OnInit () {

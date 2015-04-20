@@ -44,6 +44,7 @@ public class Geek : MonoBehaviour {
 
 		if (enemy && !enemy.isDead) {
 			enemy.OnHit(this);
+			enemy.OnAddCoins();
 
 			if (enemy.gameObject.tag == "EnemyFloor") {
 				enemy.SetDeadSpeed(0, 0);
@@ -65,10 +66,15 @@ public class Geek : MonoBehaviour {
 	}
 
 	void Update() {
+		if (gameManager.gameOvered) {
+			return;
+		}
+
 		if (paused) {
 			SetGeekRotation (-rotation);
 			return;
 		}
+
 		float floorY = floor.position.y;
 
 		speedY += gravity;

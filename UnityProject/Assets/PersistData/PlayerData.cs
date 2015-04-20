@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class PlayerData {
 	public int coins = 0;
+	public int xp = 0;
 
 	public int heroId = 1;
 	public int weaponId = 1;

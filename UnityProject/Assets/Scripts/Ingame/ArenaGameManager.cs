@@ -11,6 +11,7 @@ public class ArenaGameManager : MonoBehaviour {
 	public HitMeter meter;
 
 	public EnemySpawner[] EnemyGenSpawners;
+	public Transform replayButton;
 
 	private int gameModePhrase;
 	private bool resposeMouseClick;
@@ -110,9 +111,15 @@ public class ArenaGameManager : MonoBehaviour {
 
 	public void gameOver() {
 		if (gameOvered == false) {
-			Debug.Log("Game over!");
+			replayButton.gameObject.SetActive (true);
+			Global.player.xp += (int)(geek.Distance / Global.xpPerMile);
+			Global.player.SavePlayerData();
 			gameOvered = true;
 		}
+	}
+
+	public void ReplayGame() {
+		Application.LoadLevel ("GameArena");
 	}
 
 	public void LoadNaviMapScene () {

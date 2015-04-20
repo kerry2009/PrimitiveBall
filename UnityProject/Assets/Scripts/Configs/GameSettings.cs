@@ -7,6 +7,7 @@ public class GameSettings {
 	public Dictionary<int, WeaponItemConfig> weaponConfigs;
 	public Dictionary<int, BoosterItemConfig> boosterConfigs;
 	public Dictionary<int, SkillItemConfig> skillConfigs;
+	public LevelConfig[] levelConfigs;
 
 	public void initGameSettings() {
 		HeroItemConfig[] heroAry = Resources.LoadAll<HeroItemConfig> ("Prefabs/HeroCfg");
@@ -32,6 +33,8 @@ public class GameSettings {
 		foreach (SkillItemConfig skillCfg in skillAry) {
 			skillConfigs.Add(skillCfg.id, skillCfg);
 		}
+
+		levelConfigs = Resources.LoadAll<LevelConfig> ("Prefabs/LevelsCfg");
 	}
 
 }

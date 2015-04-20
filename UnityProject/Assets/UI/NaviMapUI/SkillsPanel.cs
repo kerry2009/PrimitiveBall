@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class SkillsPanel : GridListPanel {
+	public Text pointsText;
 	public SkillItemDisplay shopItemPrefab;
 
 	private SkillItemDisplay currentSkill = null;
@@ -45,8 +46,26 @@ public class SkillsPanel : GridListPanel {
 
 	public void ClickAddSkill() {
 		if (currentSkill) {
-			currentSkill.AddSkill();
-			Global.player.SaveSkillsData();
+			int points = availableSkillPoints;
+			if (points > 0) {
+				currentSkill.AddSkill();
+				Global.player.SaveSkillsData();
+				pointsText.text = (points - 1).ToString();
+			}
+		}
+	}
+
+	private int availableSkillPoints {
+		get {
+			int totalPoints = Global.player.level.skillPoints;
+			int usedPoints = 0;
+
+			Dictionary<int, SkillItemConfig> skillConfigs = Global.gameSettings.skillConfigs;
+			foreach (SkillItemConfig skillCfg in skillConfigs.Values) {
+				SkillData sd = Global.player.skills[skillCfg.id];
+				usedPoints += sd.point;
+			}
+			return totalPoints - usedPoints;
 		}
 	}
 
@@ -57,6 +76,8 @@ public class SkillsPanel : GridListPanel {
 			itemDisplay = listContainer.GetChild(i).GetComponent<SkillItemDisplay>();
 			itemDisplay.RestSkill();
 		}
+
+		pointsText.text = (Global.player.level.skillPoints).ToString();
 
 		Global.player.SaveSkillsData();
 	}

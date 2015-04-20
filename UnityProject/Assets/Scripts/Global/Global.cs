@@ -23,6 +23,8 @@ public class Global : MonoBehaviour {
 	public const float bgStarsScrollX = 0.0001f;
 	public const float bgStarsScrollY = 0.0001f;
 
+	public const int xpPerMile = 100;
+
 	// instances
 	private static GameSettings _gs = null;
 	private static Player _player = null;

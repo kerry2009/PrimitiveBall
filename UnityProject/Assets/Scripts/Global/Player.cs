@@ -266,6 +266,29 @@ public class Player {
 		}
 	}
 
+	public int xp {
+		get {
+			return _playerData.xp;
+		}
+		set {
+			_playerData.xp = value;
+		}
+	}
+
+	public LevelConfig level {
+		get {
+			LevelConfig foundLevel = null;
+			LevelConfig[] lvConfgs = Global.gameSettings.levelConfigs;
+			for (int i = lvConfgs.Length - 1; i >= 0; i--) {
+				if (_playerData.xp >= lvConfgs[i].xp) {
+					foundLevel = lvConfgs[i];
+					break;
+				}
+			}
+			return foundLevel;
+		}
+	}
+
 	public int copper {
 		get {
 			return _playerData.copper;

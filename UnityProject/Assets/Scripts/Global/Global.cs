@@ -11,6 +11,9 @@ public class Global : MonoBehaviour {
 	public const float SMASH_AIR_X = 0.8f;
 	public const float SMASH_AIR_Y = -2f;
 
+	public const float Enemy_SPEED_RATE_MIN = 0.7f;
+	public const float Enemy_SPEED_RATE_MAX = 0.98f;
+
 	public const float bgFrontScrollX = 0.5f;
 	public const float bgFrontScrollY = 1f;
 

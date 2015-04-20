@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour {
+	public Geek geek;
 	public Enemy[] prefabs; // Array of prefabs.
 	public float spawnXDist;
 
@@ -82,7 +83,7 @@ public class EnemySpawner : MonoBehaviour {
 				enemy.transform.position = p;
 
 				// init enemy
-				enemy.OnInit ();
+				enemy.OnInit (geek.speedX * Global.Enemy_SPEED_RATE_MIN, geek.speedX * Global.Enemy_SPEED_RATE_MAX);
 				enemy.transform.SetParent (container, false);
 				spawnedObjects.Add(enemy);
 			}

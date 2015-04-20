@@ -23,13 +23,13 @@ public class Enemy : MovableGameObject {
 		Global.player.coins += (int)(gainCoins * Global.player.playProperties.AddXpCoins);
 	}
 
-	public void OnInit () {
+	public void OnInit (float speedXMin, float speedXMax) {
 		curbloodNum = 0;
 		moveXSpeed = 0;
 		moveYSpeed = 0;
 		isDead = false;
 
-		moveXSpeed = Random.Range (1f, 3f);
+		moveXSpeed = Random.Range (speedXMin, speedXMax);
 		gameObject.SetActive (true);
 
 		animator.Play ("EnemyRun");

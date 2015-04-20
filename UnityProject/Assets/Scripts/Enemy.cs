@@ -25,8 +25,10 @@ public class Enemy : MovableGameObject {
 		moveYSpeed = 0;
 		isDead = false;
 
-		moveXSpeed = Random.Range (0.1f, 0.3f);
+		moveXSpeed = Random.Range (1f, 3f);
 		gameObject.SetActive (true);
+
+		animator.Play ("EnemyRun");
 	}
 
 	public void SetDeadSpeed(float sX, float sY) {
@@ -43,14 +45,15 @@ public class Enemy : MovableGameObject {
 		}
 		set {
 			_animator = value;
-			_animator.Play ("EnemyRun");
 		}
 	}
 
 	public void OnEnemyDead() {
-		animator.Play ("EnemyDie");
-		isDead = true;
-		curbloodNum = 0;
+		if (!isDead) {
+			animator.Play ("EnemyDie");
+			isDead = true;
+			curbloodNum = 0;
+		}
 	}
 
 	protected virtual void OnMove() {

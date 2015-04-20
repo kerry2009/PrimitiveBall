@@ -82,8 +82,6 @@ public class ArenaGameManager : MonoBehaviour {
 	}
 
 	private void hitGeekFirst() {
-		hero.PlayHeroStartHit ();
-
 		FlashScreen.gameObject.SetActive (true);
 		showFlashScreen ();
 
@@ -99,6 +97,7 @@ public class ArenaGameManager : MonoBehaviour {
 		geek.speedY = Mathf.Sin (firstHitAngle) * firstHitPower;
 
 		geek.SetArrowHit (true);
+		hero.PlayHeroStartHit ();
 	}
 
 	public void showFlashScreen() {

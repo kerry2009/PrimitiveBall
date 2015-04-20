@@ -11,6 +11,7 @@ public class Hero : MonoBehaviour {
 	private int currentState;
 	private int targetState;
 	private float speedX;
+	private float accSpeedX;
 	private Animator animator;
 	private float floorY;
 
@@ -22,16 +23,14 @@ public class Hero : MonoBehaviour {
 	void Awake() {
 		animator = GetComponent<Animator> ();
 		floorY = heroRunFloor.position.y;
-	}
 
-	// Use this for initialization
-	void Start () {
 		speedX = 0;
+		accSpeedX = 0;
 		currentState = STATE_IDLE;
 		targetState = STATE_IDLE;
 	}
 
-	void Update () {
+	void LateUpdate () {
 		Vector3 heroPos = transform.position;
 
 		AnimatorStateInfo asi = animator.GetCurrentAnimatorStateInfo (0);
@@ -65,24 +64,27 @@ public class Hero : MonoBehaviour {
 		float dist = geek.transform.position.x - transform.position.x;
 
 		if (dist >= 0) {
-			if (geek.speedX <= 0.3f) {
-				speedX = 0.3f;
-			} else if (dist >= 5.0f) {
-				speedX = geek.speedX + 0.1f;
-			} else if (dist < 4.9f) {
-				speedX = geek.speedX - 0.1f;
-			} else {
+			if (dist >= 2f) {
 				speedX = geek.speedX;
+				accSpeedX = 0.01f;
+			} else {
+				speedX = geek.speedX - 0.2f;
+				if (dist < 1f) {
+					accSpeedX = 0;
+				}
 			}
 
-			if (speedX > dist) {
-				speedX = dist;
+			if (accSpeedX > 0) {
+				accSpeedX += 0.2f;
 			}
+
+			speedX += accSpeedX;
 		} else {
-			speedX = 0;
+			speedX = geek.speedX;
+			accSpeedX = 0;
 		}
 
-		heroPos.x += speedX;
+		heroPos.x += speedX * Time.deltaTime;
 		heroPos.y = floorY;
 	}
 

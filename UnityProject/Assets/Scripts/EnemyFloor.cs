@@ -7,10 +7,9 @@ public class EnemyFloor : Enemy {
 	public float reboundUpY;
 
 	override protected void OnMove() {
-		Vector3 tranPos = transform.position;
-		tranPos.x += moveXSpeed;
-		tranPos.y += moveYSpeed;
-		transform.position = tranPos;
+		Vector3 tranPos = transform.localPosition;
+		tranPos.x += moveXSpeed * Time.deltaTime;
+		transform.localPosition = tranPos;
 	}
 
 	override public void OnHit(Geek geek) {

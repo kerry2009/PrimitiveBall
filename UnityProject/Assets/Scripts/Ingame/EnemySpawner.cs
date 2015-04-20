@@ -66,7 +66,7 @@ public class EnemySpawner : MonoBehaviour {
 					enemy = outScreenObjects[0];
 					outScreenObjects.RemoveAt(0);
 
-					enemy.animator = prefabEnemy.animator;
+					enemy.animator.runtimeAnimatorController = prefabEnemy.animator.runtimeAnimatorController;
 
 					// debug only
 					SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();

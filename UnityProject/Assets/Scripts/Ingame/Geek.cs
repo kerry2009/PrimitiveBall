@@ -44,14 +44,14 @@ public class Geek : MonoBehaviour {
 
 		if (enemy && !enemy.isDead) {
 			enemy.OnHit(this);
-			enemy.OnEnemyDead();
 
 			if (enemy.gameObject.tag == "EnemyFloor") {
-				enemy.SetDeadSpeed(enemy.moveXSpeed * 0.9f, 0);
+				enemy.SetDeadSpeed(0, 0);
 			} else if (enemy.gameObject.tag == "EnemyFly") {
-				enemy.SetDeadSpeed(enemy.moveXSpeed * 0.9f, -0.9f);
+				enemy.SetDeadSpeed(0, -0.9f);
 			}
 
+			enemy.OnEnemyDead();
 		}
 	}
 
@@ -81,8 +81,8 @@ public class Geek : MonoBehaviour {
 			speedX *= floorFrictionX;
 			speedY *= -floorFrictionY;
 
-			vect.x += speedX * 0.1f;
-			vect.y += speedY * 0.1f;
+			vect.x += speedX * Time.deltaTime;
+			vect.y += speedY * Time.deltaTime;
 
 			// check is dead
 			if (speedX < 0.005f) {
@@ -99,8 +99,8 @@ public class Geek : MonoBehaviour {
 				PlayFlyAnimation(Random.Range(2, 5));
 			}
 		} else {
-			vect.x += speedX * 0.1f;
-			vect.y += speedY * 0.1f;
+			vect.x += speedX * Time.deltaTime;
+			vect.y += speedY * Time.deltaTime;
 		}
 
 		transform.position = vect;
@@ -108,7 +108,7 @@ public class Geek : MonoBehaviour {
 		if (arrowHitRotation) {
 			rotation = -Mathf.Atan2(speedY * 0.5f, speedX) * (180 / Mathf.PI) + 90f;
 		} else {
-			rotation += reboundRot;
+			rotation += reboundRot * Time.deltaTime;
 			reboundRot *= 0.95f;
 		}
 

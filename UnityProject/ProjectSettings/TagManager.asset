@@ -52,8 +52,11 @@ TagManager:
   - name: mid_bgLayer
     uniqueID: 1944324753
     locked: 0
-  - name: cloudsLayer
+  - name: cloudsFrontLayer
     uniqueID: 375365103
+    locked: 0
+  - name: cloudsBackLayer
+    uniqueID: 3307317653
     locked: 0
   - name: front_bgLayer
     uniqueID: 2565087937

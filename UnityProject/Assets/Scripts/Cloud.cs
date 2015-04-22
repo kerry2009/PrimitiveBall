@@ -2,22 +2,21 @@
 using System.Collections;
 
 public class Cloud : MonoBehaviour {
-	public float moveXSpeed = 0f;
-	private Vector3 localPos;
+	public float moveXSpeed;
+	private Vector3 relativePos;
 
 	void Start() {
-		localPos = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
+		relativePos = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
 	}
 
-	public void CloudMove() {
-		moveXSpeed = -0.05f;
-		localPos.x += moveXSpeed;
-		transform.localPosition = localPos;
+	public void CloudMove(float scrollSpeedX) {
+		relativePos.x += moveXSpeed * Time.deltaTime + scrollSpeedX;
+		transform.position = relativePos;
 	}
 
 	public void ResetCloudToPos(float resetPosX) {
-		localPos.x = resetPosX;
-		transform.localPosition = localPos;
+		relativePos.x = resetPosX;
+		transform.position = relativePos;
 	}
 
 }

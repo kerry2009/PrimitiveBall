@@ -45,6 +45,7 @@ public class HitMeter : MonoBehaviour {
 			if (curAngle >= criticalAngleMin && curAngle <= criticalAngleMax) {
 				cursorImg.color = Color.grey;
 			} else {
+				// Debug.Log(curAngle + "_" + criticalAngleMin + "_" + criticalAngleMax);
 				cursorImg.color = Color.white;
 			}
 		}

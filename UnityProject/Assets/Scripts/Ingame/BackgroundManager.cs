@@ -12,7 +12,8 @@ public class BackgroundManager : MonoBehaviour {
 
 	public Transform bgSky;
 	public Transform bgStars;
-	public Transform clouds;
+	public CloudsManager cloudsFront;
+	public CloudsManager cloudsBack;
 	public Transform enemyGenerator;
 
 	public Transform skyVanishiStart;
@@ -86,7 +87,10 @@ public class BackgroundManager : MonoBehaviour {
 
 		GroupMove (bgStars, offsetX, offsetY);
 		GroupMove (bgSky, offsetX, 0);
-		GroupMove (clouds, offsetX, 0);
+
+		cloudsFront.MoveClouds (offsetX, offsetY, Global.bgMidScrollX, Global.bgMidScrollY);
+		cloudsBack.MoveClouds (offsetX, offsetY, Global.bgBackScrollX, Global.bgBackScrollY);
+
 		GroupMove (enemyGenerator, offsetX, 0);
 
 		ScrollStarsBG (offsetX * Global.bgStarsScrollX, offsetY * Global.bgStarsScrollY);
@@ -99,7 +103,7 @@ public class BackgroundManager : MonoBehaviour {
 		bgTrans.position = transPos;
 	}
 
-	private static Vector2 offsetVect2 = new Vector2 ();
+	private Vector2 offsetVect2 = new Vector2 ();
 	private void ScrollStarsBG(float offsetX, float offsetY) {
 		offsetVect2.x = Mathf.Repeat(offsetVect2.x + offsetX, 1.0f);
 		offsetVect2.y = Mathf.Repeat(offsetVect2.y + offsetY, 1.0f);

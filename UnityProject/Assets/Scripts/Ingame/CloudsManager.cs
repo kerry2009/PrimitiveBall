@@ -8,29 +8,27 @@ public class CloudsManager : MonoBehaviour {
 	private Cloud[] clouds;
 	private int numClouds;
 
-	private float leftEdge;
-	private float rightEdge;
-
 	// Use this for initialization
 	void Start () {
-		leftEdge = cloudLeft.localPosition.x;
-		rightEdge = cloudRight.localPosition.x;
-
 		clouds = transform.GetComponentsInChildren<Cloud> ();
 		numClouds = clouds.Length;
 	}
-	
-	// Update is called once per frame
-	void LateUpdate () {
+
+	public void MoveClouds(float scrollSpeedX, float scrollSpeedY, float ratioX, float ratioY) {
 		Cloud c;
 		for (int i = 0; i < numClouds; i++) {
 			c = clouds[i];
-			if (c.transform.localPosition.x < leftEdge) {
-				c.ResetCloudToPos(rightEdge + (c.transform.localPosition.x - leftEdge));
+			c.moveXSpeed = -0.5f;
+			if (c.transform.position.x < cloudLeft.position.x) {
+				c.ResetCloudToPos(cloudRight.position.x + (c.transform.position.x - cloudLeft.position.x));
 			} else {
-				c.CloudMove();
+				c.CloudMove(scrollSpeedX * ratioX);
 			}
 		}
+
+		Vector3 pos = transform.position;
+		pos.y += scrollSpeedY * (1f - ratioY);
+		transform.position = pos;
 	}
 
 }

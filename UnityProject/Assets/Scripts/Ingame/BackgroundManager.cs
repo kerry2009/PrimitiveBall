@@ -84,7 +84,7 @@ public class BackgroundManager : MonoBehaviour {
 		if (followObject) {
 			Vector3 targetPosition = followObject.position;
 			targetPosition.z = mainCamera.transform.position.z;
-			mainCamera.transform.position = targetPosition;//Vector3.SmoothDamp(mainCamera.transform.position, targetPosition, ref cameraVelocity, smoothTime);
+			mainCamera.transform.position = Vector3.SmoothDamp(mainCamera.transform.position, targetPosition, ref cameraVelocity, smoothTime);
 		}
 
 		if (followObject == geek.transform) {

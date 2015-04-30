@@ -19,6 +19,7 @@ public class EnemyFly : Enemy {
 
 	override public void OnHit(Geek geek) {
 		geek.speedY += reboundY * Global.player.playProperties.EnemyRebound;
+		OnAddCoins();
 	}
 
 }

@@ -2,20 +2,18 @@
 using System.Collections;
 
 public class InfiniteScrollBackground : MonoBehaviour {
-	public Transform imgs;
-	public Transform head;
-
-	private float resetLeft;
-	private float curLeft;
+	private Transform imgs;
+	private Transform head;
 	private float imageSizeX;
+
+	private static Vector3 screenLeft = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
-		SpriteRenderer sr = head.GetComponent<SpriteRenderer> ();
+		imgs = gameObject.transform.GetChild (0).transform;
+		head = imgs.gameObject.transform.GetChild(0).transform;
 
-		imageSizeX = sr.bounds.extents.x * 2;
-		resetLeft = head.localPosition.x;
-		curLeft = resetLeft;
+		imageSizeX = head.GetComponent<SpriteRenderer>().bounds.extents.x;
 	}
 
 	public void MoveBackground (float scrollSpeedX, float scrollSpeedY, float ratioX, float ratioY) {
@@ -24,16 +22,16 @@ public class InfiniteScrollBackground : MonoBehaviour {
 		pos.y += scrollSpeedY * (1f - ratioY);
 		transform.position = pos;
 
-		Vector3 imagesVect = imgs.transform.localPosition;
-		curLeft -= scrollSpeedX * ratioX;
+		Vector3 localPos = imgs.localPosition;
+		Vector3 outz = Camera.main.ScreenToWorldPoint (screenLeft);
+		float headEndX = head.transform.position.x + imageSizeX;
 
-		if (curLeft < resetLeft - imageSizeX) {
-			curLeft = resetLeft - (resetLeft - imageSizeX - curLeft) % imageSizeX;
+		if (headEndX < outz.x) {
+			localPos.x += imageSizeX * 2 - ((outz.x - headEndX) % (imageSizeX * 2));
 		}
+		localPos.x -= scrollSpeedX * ratioX;
 
-		imagesVect.x = curLeft;
-		imgs.transform.localPosition = imagesVect;
+		imgs.localPosition = localPos;
 	}
-
 
 }

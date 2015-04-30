@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: c4c0f6d750a3d084e803667fd8498a65
-timeCreated: 1428834821
+guid: 1aa271372160208409da8492abb50c0d
+timeCreated: 1429727049
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: img102_0
-    21300002: img102_1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -39,38 +37,18 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: .5, y: .5}
+  alignment: 7
+  spritePivot: {x: .5, y: 0}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: img102_0
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 528
-        width: 1022
-        height: 485
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: img102_1
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 48
-        width: 318
-        height: 460
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

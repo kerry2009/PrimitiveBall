@@ -6,8 +6,6 @@ public class ArenaGameManager : MonoBehaviour {
 	public Hero hero;
 
 	public Animator FlashScreen;
-
-	public Transform followObject;
 	public HitMeter meter;
 
 	public EnemySpawner[] EnemyGenSpawners;

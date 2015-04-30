@@ -4,14 +4,14 @@ using System.Collections;
 public class Hero : MonoBehaviour {
 
 	public ArenaGameManager gameManager;
+	public BackgroundManager backgroundManager;
 	public Geek geek;
 	public Transform hitDivLine;
 	public Transform heroRunFloor;
+	public float smoothTime;
 
 	private int currentState;
 	private int targetState;
-	private float speedX;
-	private float accSpeedX;
 	private Animator animator;
 	private float floorY;
 
@@ -19,13 +19,12 @@ public class Hero : MonoBehaviour {
 	private const int STATE_RUN = 1;
 	private const int STATE_AIRHIT = 2;
 	private const int STATE_GROUNDHIT = 3;
+	private Vector3 velocity = Vector3.zero;
 
 	void Awake() {
 		animator = GetComponent<Animator> ();
 		floorY = heroRunFloor.position.y;
 
-		speedX = 0;
-		accSpeedX = 0;
 		currentState = STATE_IDLE;
 		targetState = STATE_IDLE;
 	}
@@ -39,53 +38,32 @@ public class Hero : MonoBehaviour {
 				heroPos.x = geek.transform.position.x;
 				heroPos.y = floorY;
 				currentState = STATE_RUN;
+				transform.position = heroPos;
 			} else {
-				CalcHeroRunPos(ref heroPos);
+				MoveTowardGeek();
 			}
 		}
 
 		if (currentState != targetState) {
 			if (targetState == STATE_GROUNDHIT) {
-				CalcHeroRunPos(ref heroPos);
 				currentState = STATE_GROUNDHIT;
 				targetState = STATE_RUN;
+				transform.position = heroPos;
 			} else if (targetState == STATE_AIRHIT) {
 				heroPos.x = geek.transform.position.x;
 				heroPos.y = geek.transform.position.y;
 				currentState = STATE_AIRHIT;
 				targetState = STATE_RUN;
+				transform.position = heroPos;
 			}
 		}
-
-		transform.position = heroPos;
 	}
 
-	public void CalcHeroRunPos(ref Vector3 heroPos) {
-		float dist = geek.transform.position.x - transform.position.x;
-
-		if (dist >= 0) {
-			if (dist >= 2f) {
-				speedX = geek.speedX;
-				accSpeedX = 0.01f;
-			} else {
-				speedX = geek.speedX - 0.2f;
-				if (dist < 1f) {
-					accSpeedX = 0;
-				}
-			}
-
-			if (accSpeedX > 0) {
-				accSpeedX += 0.2f;
-			}
-
-			speedX += accSpeedX;
-		} else {
-			speedX = geek.speedX;
-			accSpeedX = 0;
-		}
-
-		heroPos.x += speedX * Time.deltaTime;
-		heroPos.y = floorY;
+	public void MoveTowardGeek() {
+		Vector3 targetPosition = geek.transform.position;
+		targetPosition.y = floorY;
+		targetPosition.z = transform.position.z;
+		transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
 	}
 
 	public void hit() {
@@ -148,7 +126,7 @@ public class Hero : MonoBehaviour {
 	}
 
 	public void pauseGeekMove() {
-		gameManager.followObject = null;
+		backgroundManager.followObject = transform;
 		geek.paused = true;
 	}
 
@@ -158,11 +136,12 @@ public class Hero : MonoBehaviour {
 	}
 
 	public void cameraOnHero() {
-		gameManager.followObject = transform;
+		backgroundManager.followObject = transform;
 	}
 
 	public void cameraOnGeek() {
-		gameManager.followObject = geek.transform;
+		backgroundManager.followObject = geek.transform;
+		backgroundManager.CameraSmoothToGeek ();
 	}
 
 }

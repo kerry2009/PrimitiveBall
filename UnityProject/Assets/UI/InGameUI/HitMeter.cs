@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class HitMeter : MonoBehaviour {
-	public Transform cursor;
+	public GameObject cursor;
+	public GameObject powerBG;
 	public Image cursorImg;
 	public Transform showPosTrans;
 	public Transform hidePosTrans;
@@ -14,8 +15,6 @@ public class HitMeter : MonoBehaviour {
 	private float criticalAngleMin;
 	private float criticalAngleMax;
 	private bool isAngleRun;
-
-	public Transform powerBG;
 
 	void Awake() {
 		isAngleRun = false;
@@ -32,20 +31,20 @@ public class HitMeter : MonoBehaviour {
 	public void RunAngleCursor() {
 		isAngleRun = true;
 
-		TweenLite.To (cursor.transform, TweenProperties.localRotation,
-		              new Vector3 (0, 0, angleMin),
-		              new Vector3 (0, 0, angleMax),
-		              speed, TweenRestricts.z, null, null, true);
+		Quaternion minRot = cursor.transform.localRotation;
+		minRot.z = angleMin * Mathf.PI / 180;
+		cursor.transform.localRotation = minRot;
+
+		iTween.RotateTo (cursor, iTween.Hash ("z", angleMax, "time", speed, "loopType", iTween.LoopType.pingPong, "isLocal", true, "easetype", iTween.EaseType.linear, "onupdate", "OnRotationUpdate", "onupdatetarget", gameObject));
 	}
 
-	void LateUpdate() {
+	private void OnRotationUpdate() {
 		if (isAngleRun) {
 			float curAngle = ((int)(cursor.transform.localRotation.eulerAngles.z * 100f)) / 100f;
 
 			if (curAngle >= criticalAngleMin && curAngle <= criticalAngleMax) {
 				cursorImg.color = Color.grey;
 			} else {
-				// Debug.Log(curAngle + "_" + criticalAngleMin + "_" + criticalAngleMax);
 				cursorImg.color = Color.white;
 			}
 		}
@@ -56,31 +55,33 @@ public class HitMeter : MonoBehaviour {
 	}
 
 	public void StopAngleCursor() {
-		TweenLite.Kill (cursor.transform, TweenProperties.localRotation);
+		iTween.Stop (cursor);
 	}
 
 	public void RunPowerCursor() {
-		TweenLite.To (powerBG, TweenProperties.localScale,
-		              new Vector3 (0, 0, 1f),
-		              new Vector3 (1f, 1f, 1f),
-		              speed, TweenRestricts.x | TweenRestricts.y, null, null, true);
+		Vector3 minSal = powerBG.transform.localScale;
+		minSal.x = 0;
+		minSal.y = 0;
+		powerBG.transform.localScale = minSal;
+
+		iTween.ScaleTo (powerBG, iTween.Hash ("x", 1, "y", 1, "time", speed, "loopType", iTween.LoopType.pingPong, "isLocal", true, "easetype", iTween.EaseType.linear));
 	}
 	
 	public float GetPowerPercentage() {
-		return powerBG.localScale.x;
+		return powerBG.transform.localScale.x;
 	}
 
 	public void StopPowerCursor() {
-		TweenLite.Kill (powerBG, TweenProperties.localScale);
+		iTween.Stop (powerBG);
 	}
 
 	public void easeIn() {
-		TweenLite.To (transform, TweenProperties.position, transform.position, new Vector3 (transform.position.x, showPosTrans.position.y, transform.position.z), 0.7f, TweenRestricts.y, null, null, false);
+		iTween.MoveTo (gameObject, iTween.Hash("y", showPosTrans.position.y, "time", 1, "easetype", iTween.EaseType.easeOutBounce));
 	}
 	
 	public void easeOut() {
 		isAngleRun = false;
-		TweenLite.To (transform, TweenProperties.position, transform.position, new Vector3 (transform.position.x, hidePosTrans.position.y, transform.position.z), 0.7f, TweenRestricts.y, null, null, false);
+		iTween.MoveTo (gameObject, iTween.Hash("y", hidePosTrans.position.y, "time", 1, "easetype", iTween.EaseType.easeInElastic));
 	}
 
 }

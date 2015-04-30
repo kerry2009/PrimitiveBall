@@ -20,6 +20,10 @@ public class EnemyFloor : Enemy {
 		} else {
 			geek.speedY += reboundY * rebound;
 		}
+		OnAddCoins();
+
+		CameraEffects ce = Camera.main.GetComponent<CameraEffects>();
+		ce.SetBulletTime (0.1f, 3f);
 	}
 
 }

@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 64673bbe95bb3ce4f8839b15e876a281
-timeCreated: 1428862495
+guid: 10705eba06ef62f4eaec6812d757cac0
+timeCreated: 1429726690
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: img145_0
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,28 +37,18 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 60
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: img145_0
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 865
-        width: 27
-        height: 141
-      alignment: 7
-      pivot: {x: .5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

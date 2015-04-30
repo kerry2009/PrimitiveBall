@@ -44,7 +44,6 @@ public class Geek : MonoBehaviour {
 
 		if (enemy && !enemy.isDead) {
 			enemy.OnHit(this);
-			enemy.OnAddCoins();
 
 			if (enemy.gameObject.tag == "EnemyFloor") {
 				enemy.SetDeadSpeed(0, 0);
@@ -66,6 +65,8 @@ public class Geek : MonoBehaviour {
 	}
 
 	void Update() {
+
+
 		if (gameManager.gameOvered) {
 			return;
 		}
@@ -76,7 +77,6 @@ public class Geek : MonoBehaviour {
 		}
 
 		float floorY = floor.position.y;
-
 		speedY += gravity;
 		Vector3 vect = transform.position;
 
@@ -108,6 +108,10 @@ public class Geek : MonoBehaviour {
 			vect.x += speedX * Time.deltaTime;
 			vect.y += speedY * Time.deltaTime;
 		}
+
+		// debug: move forward
+		//vect.x += 0.1f;
+		//vect.y = 3f;
 
 		transform.position = vect;
 

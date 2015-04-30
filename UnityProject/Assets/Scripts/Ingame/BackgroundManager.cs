@@ -3,8 +3,10 @@ using System.Collections;
 
 public class BackgroundManager : MonoBehaviour {
 	public ArenaGameManager gameManager;
+	public Geek geek;
 	public Camera mainCamera;
 	public GameObject cameraRestrictCorner;
+	public Transform followObject;
 
 	public InfiniteScrollBackground bgBack;
 	public InfiniteScrollBackground bgMiddle;
@@ -19,22 +21,46 @@ public class BackgroundManager : MonoBehaviour {
 	public Transform skyVanishiStart;
 	public Transform skyVanishiEnd;
 	public SpriteRenderer skyRenderer;
-	public Transform geekTransform;
 
-	private Vector2 lastCameraPos;
-	private float limitLeft;
-	private float limitBottom;
+	private float smoothTime;
+	private Vector2 lastGeekPos;
 	private Material starsMaterial;
+	private Vector3 cameraVelocity;
 
 	void Start() {
-		limitLeft = cameraRestrictCorner.transform.position.x;
-		limitBottom = cameraRestrictCorner.transform.position.y;
-		lastCameraPos = new Vector2 (mainCamera.transform.position.x, mainCamera.transform.position.y);
+		smoothTime = 0;
+		cameraVelocity = Vector3.zero;
+		followObject = geek.transform;
+		lastGeekPos = new Vector2 (geek.transform.position.x, geek.transform.position.y);
 		starsMaterial = bgStars.GetComponent<Renderer>().sharedMaterials[0];
 	}
 
-	void Update() {
-		Vector3 geekPos = geekTransform.position;
+	void LateUpdate() {
+		UpdateSkyColor ();
+		CameraFollow ();
+	}
+
+	public void CameraSmoothToGeek() {
+		iTween.Stop(gameObject);
+		iTween.ValueTo(gameObject, iTween.Hash("from", 0.1f, "to", 0f, "time", 1, "onupdate", "UpdateCameraSmooth"));
+		iTween.ValueTo(gameObject, iTween.Hash("from", mainCamera.orthographicSize, "to", 8.0f, "time", 2, "onupdate", "OnZooCamera", "oncomplete", "StartZoominCamera"));
+	}
+
+	private void UpdateCameraSmooth(float _smoothTime) {
+		smoothTime = _smoothTime;
+	}
+
+	private void OnZooCamera(float _cameraSize) {
+		mainCamera.orthographicSize = _cameraSize;
+	}
+
+	private void StartZoominCamera() {
+		iTween.ValueTo(gameObject, iTween.Hash("from", mainCamera.orthographicSize, "to", 5.0f, "time", 2, "delay", 1.5f, "onupdate", "OnZooCamera"));
+	}
+
+	private void UpdateSkyColor() {
+		// Update sky color
+		Vector3 geekPos = geek.transform.position;
 		if (geekPos.y > skyVanishiStart.position.y) {
 			Color skyColor = skyRenderer.color;
 			
@@ -54,46 +80,34 @@ public class BackgroundManager : MonoBehaviour {
 		}
 	}
 
-	void LateUpdate() {
-		if (gameManager.followObject) {
-			cameraFollower (gameManager.followObject);
-		}
-	}
-	
-	private void cameraFollower(Transform followee) {
-		Vector3 cameraPos = mainCamera.transform.position;
-		cameraPos.x = followee.position.x;
-		cameraPos.y = followee.position.y;
-
-		if (cameraPos.x < limitLeft) {
-			cameraPos.x = limitLeft;
+	private void CameraFollow() {
+		if (followObject) {
+			Vector3 targetPosition = followObject.position;
+			targetPosition.z = mainCamera.transform.position.z;
+			mainCamera.transform.position = targetPosition;//Vector3.SmoothDamp(mainCamera.transform.position, targetPosition, ref cameraVelocity, smoothTime);
 		}
 
-		if (cameraPos.y < limitBottom) {
-			cameraPos.y = limitBottom;
+		if (followObject == geek.transform) {
+			float offsetX = geek.transform.position.x - lastGeekPos.x;
+			float offsetY = geek.transform.position.y - lastGeekPos.y;
+			
+			lastGeekPos.x = geek.transform.position.x;
+			lastGeekPos.y = geek.transform.position.y;
+			
+			bgFront.MoveBackground (offsetX, offsetY, Global.bgFrontScrollX, Global.bgFrontScrollY);
+			bgMiddle.MoveBackground (offsetX, offsetY, Global.bgMidScrollX, Global.bgMidScrollY);
+			bgBack.MoveBackground (offsetX, offsetY, Global.bgBackScrollX, Global.bgBackScrollY);
+			
+			GroupMove (bgStars, offsetX, offsetY);
+			GroupMove (bgSky, offsetX, 0);
+			
+			cloudsFront.MoveClouds (offsetX, offsetY, Global.bgMidScrollX, Global.bgMidScrollY);
+			cloudsBack.MoveClouds (offsetX, offsetY, Global.bgBackScrollX, Global.bgBackScrollY);
+			
+			GroupMove (enemyGenerator, offsetX, 0);
+			
+			ScrollStarsBG (offsetX * Global.bgStarsScrollX, offsetY * Global.bgStarsScrollY);
 		}
-
-		mainCamera.transform.position = cameraPos;
-		
-		float offsetX = cameraPos.x - lastCameraPos.x;
-		float offsetY = cameraPos.y - lastCameraPos.y;
-
-		lastCameraPos.x = cameraPos.x;
-		lastCameraPos.y = cameraPos.y;
-
-		bgFront.MoveBackground (offsetX, offsetY, Global.bgFrontScrollX, Global.bgFrontScrollY);
-		bgMiddle.MoveBackground (offsetX, offsetY, Global.bgMidScrollX, Global.bgMidScrollY);
-		bgBack.MoveBackground (offsetX, offsetY, Global.bgBackScrollX, Global.bgBackScrollY);
-
-		GroupMove (bgStars, offsetX, offsetY);
-		GroupMove (bgSky, offsetX, 0);
-
-		cloudsFront.MoveClouds (offsetX, offsetY, Global.bgMidScrollX, Global.bgMidScrollY);
-		cloudsBack.MoveClouds (offsetX, offsetY, Global.bgBackScrollX, Global.bgBackScrollY);
-
-		GroupMove (enemyGenerator, offsetX, 0);
-
-		ScrollStarsBG (offsetX * Global.bgStarsScrollX, offsetY * Global.bgStarsScrollY);
 	}
 
 	private void GroupMove(Transform bgTrans, float offsetX, float offsetY) {

@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: a61c9ad074be132499af18ee8001b758
-timeCreated: 1428835430
+guid: 11dbbd54b89635c499052497dc402f83
+timeCreated: 1429726690
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: img143_1
-    21300002: img143_3
-    21300004: img143_4
-    21300006: img143_0
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -41,38 +37,18 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 60
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: img143_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 274
-        width: 41
-        height: 13
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: img143_0
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 681
-        width: 1006
-        height: 337
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

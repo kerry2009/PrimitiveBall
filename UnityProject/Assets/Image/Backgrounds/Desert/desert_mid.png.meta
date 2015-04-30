@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: d3d58e91da851904c9752868cad74f6a
-timeCreated: 1428835396
+guid: 3ecc10460a6c03146b11779f5b198ddd
+timeCreated: 1429726691
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: img104_0
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,28 +37,18 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 60
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: img104_0
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 688
-        width: 1022
-        height: 316
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

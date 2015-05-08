@@ -9,6 +9,7 @@ public class Hero : MonoBehaviour {
 	public Transform hitDivLine;
 	public Transform heroRunFloor;
 	public float smoothTime;
+	public ParticleSystem bloodStrikeEffect;
 
 	private int currentState;
 	private int targetState;
@@ -75,8 +76,6 @@ public class Hero : MonoBehaviour {
 			SmashGround();
 			playGroundHit();
 		}
-
-		geek.SetArrowHit (true);
 	}
 
 	private void SmashGround() {
@@ -133,6 +132,7 @@ public class Hero : MonoBehaviour {
 	public void resumeGeekMove() {
 		gameManager.showFlashScreen ();
 		geek.paused = false;
+		geek.OnHeroHit ();
 	}
 
 	public void cameraOnHero() {
@@ -142,6 +142,10 @@ public class Hero : MonoBehaviour {
 	public void cameraOnGeek() {
 		backgroundManager.followObject = geek.transform;
 		backgroundManager.CameraSmoothToGeek ();
+	}
+
+	public void PlayBloodStrikeEffect() {
+		bloodStrikeEffect.Play (true);
 	}
 
 }

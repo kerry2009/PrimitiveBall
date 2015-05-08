@@ -4,6 +4,7 @@ using System.Collections;
 public class Geek : MonoBehaviour {
 	public Transform floor;
 	public ArenaGameManager gameManager;
+	public TrailRenderer flyTrail;
 
 	public float speedX;
 	public float speedY;
@@ -21,6 +22,7 @@ public class Geek : MonoBehaviour {
 
 	private Animator animator;
 	private CircleCollider2D circleCollider2d;
+	private Vector3 vect = new Vector3 ();
 
 	void Awake() {
 		animator = GetComponent<Animator>();
@@ -37,13 +39,15 @@ public class Geek : MonoBehaviour {
 
 		startX = transform.position.x;
 		startFloorY = floor.position.y;
+
+		flyTrail.sortingLayerName = GetComponent<SpriteRenderer>().sortingLayerName;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		Enemy enemy = other.gameObject.GetComponent<Enemy> ();
 
 		if (enemy && !enemy.isDead) {
-			enemy.OnHit(this);
+			enemy.OnHit (this);
 
 			if (enemy.gameObject.tag == "EnemyFloor") {
 				enemy.SetDeadSpeed(0, 0);
@@ -51,7 +55,9 @@ public class Geek : MonoBehaviour {
 				enemy.SetDeadSpeed(0, -0.9f);
 			}
 
-			enemy.OnEnemyDead();
+			enemy.OnEnemyDead ();
+			gameManager.bloodManager.AddEnemyBlood (enemy);
+//			gameManager.bloodManager.AddGeekTrailBlood (this);
 		}
 	}
 
@@ -65,8 +71,6 @@ public class Geek : MonoBehaviour {
 	}
 
 	void Update() {
-
-
 		if (gameManager.gameOvered) {
 			return;
 		}
@@ -103,6 +107,9 @@ public class Geek : MonoBehaviour {
 				// hit floor and rotation
 				CallFloorRebound();
 				PlayFlyAnimation(Random.Range(2, 5));
+
+				gameManager.bloodManager.AddHitFloorBlood(transform.position);
+				gameManager.bloodManager.AddGeekTrailBlood (this);
 			}
 		} else {
 			vect.x += speedX * Time.deltaTime;
@@ -122,10 +129,14 @@ public class Geek : MonoBehaviour {
 			reboundRot *= 0.95f;
 		}
 
+		flyTrail.startWidth = speedX * Time.deltaTime;
 		SetGeekRotation (-rotation);
 	}
 
-	private static Vector3 vect = new Vector3 ();
+	void LateUpdate() {
+		flyTrail.transform.position = transform.position;
+	}
+
 	private void SetGeekRotation(float rot) {
 		vect.x = 0;
 		vect.y = 0;
@@ -133,7 +144,12 @@ public class Geek : MonoBehaviour {
 		transform.localRotation = Quaternion.Euler(vect);
 	}
 
-	public void SetArrowHit(bool isArrowHitRot) {
+	public void OnHeroHit() {
+		SetArrowHit (true);
+		gameManager.bloodManager.AddGeekTrailBlood (this);
+	}
+
+	private void SetArrowHit(bool isArrowHitRot) {
 		arrowHitRotation = isArrowHitRot;
 		PlayFlyAnimation (1);
 	}

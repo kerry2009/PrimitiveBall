@@ -11,6 +11,7 @@ public class BackgroundManager : MonoBehaviour {
 	public InfiniteScrollBackground bgBack;
 	public InfiniteScrollBackground bgMiddle;
 	public InfiniteScrollBackground bgFront;
+	public Transform floor;
 
 	public Transform bgSky;
 	public Transform bgStars;
@@ -26,10 +27,12 @@ public class BackgroundManager : MonoBehaviour {
 	private Vector2 lastGeekPos;
 	private Material starsMaterial;
 	private Vector3 cameraVelocity;
+	private Vector2 starBGOffsetVect2;
 
 	void Start() {
 		smoothTime = 0;
 		cameraVelocity = Vector3.zero;
+		starBGOffsetVect2 = Vector2.zero;
 		followObject = geek.transform;
 		lastGeekPos = new Vector2 (geek.transform.position.x, geek.transform.position.y);
 		starsMaterial = bgStars.GetComponent<Renderer>().sharedMaterials[0];
@@ -85,49 +88,56 @@ public class BackgroundManager : MonoBehaviour {
 			Vector3 targetPosition = followObject.position;
 			targetPosition.z = mainCamera.transform.position.z;
 			mainCamera.transform.position = Vector3.SmoothDamp(mainCamera.transform.position, targetPosition, ref cameraVelocity, smoothTime);
-		}
 
-		if (followObject == geek.transform) {
-			float offsetX = geek.transform.position.x - lastGeekPos.x;
-			float offsetY = geek.transform.position.y - lastGeekPos.y;
+			float camX = mainCamera.transform.position.x;
+			float camY = mainCamera.transform.position.y;
+
+			float offsetX = camX - lastGeekPos.x;
+			float offsetY = camY - lastGeekPos.y;
 			
-			lastGeekPos.x = geek.transform.position.x;
-			lastGeekPos.y = geek.transform.position.y;
-			
+			lastGeekPos.x = camX;
+			lastGeekPos.y = camY;
+
+//			GroupMoveTo (bgStars, camX, camY);
+//			ScrollStarsBG (offsetX * Global.bgStarsScrollX, offsetY * Global.bgStarsScrollY);
+//
+//			GroupMoveTo (bgSky, camX, bgSky.position.y);
+//			GroupMoveTo (floor, camX, bgSky.position.y);
+//			GroupMoveTo (enemyGenerator, camX, enemyGenerator.position.y);
+
+			GroupMoveTo (bgStars, offsetX, offsetY);
+			ScrollStarsBG (offsetX * Global.bgStarsScrollX, offsetY * Global.bgStarsScrollY);
+
+			GroupMoveTo (bgSky, offsetX, 0);
+			GroupMoveTo (floor, offsetX, 0);
+			GroupMoveTo (enemyGenerator, offsetX, 0);
+
 			bgFront.MoveBackground (offsetX, offsetY, Global.bgFrontScrollX, Global.bgFrontScrollY);
 			bgMiddle.MoveBackground (offsetX, offsetY, Global.bgMidScrollX, Global.bgMidScrollY);
 			bgBack.MoveBackground (offsetX, offsetY, Global.bgBackScrollX, Global.bgBackScrollY);
-			
-			GroupMove (bgStars, offsetX, offsetY);
-			GroupMove (bgSky, offsetX, 0);
-			
+
 			cloudsFront.MoveClouds (offsetX, offsetY, Global.bgMidScrollX, Global.bgMidScrollY);
 			cloudsBack.MoveClouds (offsetX, offsetY, Global.bgBackScrollX, Global.bgBackScrollY);
-			
-			GroupMove (enemyGenerator, offsetX, 0);
-			
-			ScrollStarsBG (offsetX * Global.bgStarsScrollX, offsetY * Global.bgStarsScrollY);
 		}
 	}
 
-	private void GroupMove(Transform bgTrans, float offsetX, float offsetY) {
+	private void GroupMoveTo(Transform bgTrans, float posX, float posY) {
 		Vector3 transPos = bgTrans.position;
-		transPos.x += offsetX;
-		transPos.y += offsetY;
+		transPos.x += posX;
+		transPos.y += posY;
+//		transPos.x = posX;
+//		transPos.y = posY;
 		bgTrans.position = transPos;
 	}
 
-	private Vector2 offsetVect2 = new Vector2 ();
 	private void ScrollStarsBG(float offsetX, float offsetY) {
-		offsetVect2.x = Mathf.Repeat(offsetVect2.x + offsetX, 1.0f);
-		offsetVect2.y = Mathf.Repeat(offsetVect2.y + offsetY, 1.0f);
-		starsMaterial.SetTextureOffset ("_MainTex", offsetVect2);
+		starBGOffsetVect2.x = Mathf.Repeat(starBGOffsetVect2.x + offsetX, 1.0f);
+		starBGOffsetVect2.y = Mathf.Repeat(starBGOffsetVect2.y + offsetY, 1.0f);
+		starsMaterial.SetTextureOffset ("_MainTex", starBGOffsetVect2);
 	}
 
 	void OnDisable () {
-		offsetVect2.x = 0;
-		offsetVect2.y = 0;
-		starsMaterial.SetTextureOffset ("_MainTex", offsetVect2);
+		starsMaterial.SetTextureOffset ("_MainTex", Vector2.zero);
 	}
 
 }

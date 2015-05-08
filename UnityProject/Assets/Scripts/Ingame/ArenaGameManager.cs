@@ -4,6 +4,7 @@ using System.Collections;
 public class ArenaGameManager : MonoBehaviour {
 	public Geek geek;
 	public Hero hero;
+	public BloodManager bloodManager;
 
 	public Animator FlashScreen;
 	public HitMeter meter;
@@ -95,7 +96,7 @@ public class ArenaGameManager : MonoBehaviour {
 		geek.speedX = Mathf.Cos (firstHitAngle) * firstHitPower;
 		geek.speedY = Mathf.Sin (firstHitAngle) * firstHitPower;
 
-		geek.SetArrowHit (true);
+		geek.OnHeroHit ();
 		hero.PlayHeroStartHit ();
 	}
 

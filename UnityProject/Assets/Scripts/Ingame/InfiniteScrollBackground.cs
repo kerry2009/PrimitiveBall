@@ -23,13 +23,13 @@ public class InfiniteScrollBackground : MonoBehaviour {
 		transform.position = pos;
 
 		Vector3 localPos = imgs.localPosition;
-		Vector3 outz = Camera.main.ScreenToWorldPoint (screenLeft);
+		Vector3 outz = Camera.main.ViewportToWorldPoint (screenLeft);
 		float headEndX = head.transform.position.x + imageSizeX;
 
 		if (headEndX < outz.x) {
 			localPos.x += imageSizeX * 2 - ((outz.x - headEndX) % (imageSizeX * 2));
 		}
-		localPos.x -= scrollSpeedX * ratioX;
+		localPos.x -= (scrollSpeedX * ratioX) % (imageSizeX * 2);
 
 		imgs.localPosition = localPos;
 	}

@@ -5431,6 +5431,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: .0571428575
+    functionName: PlayBloodStrikeEffect
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: .54285717
     functionName: cameraOnGeek
     data: 

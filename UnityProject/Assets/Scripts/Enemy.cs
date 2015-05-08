@@ -2,18 +2,12 @@
 using System.Collections;
 
 public class Enemy : MovableGameObject {
-	public const int BLOOD_GEN_MAX = 20;
 	public float gainCoins;
 	public float createRate;
 
-	private static BloodManager bloodManager = null;
-	private int curbloodNum = 0;
 	private Animator _animator;
 
 	void Awake() {
-		if (bloodManager == null) {
-			bloodManager = GameObject.Find ("BloodManager").GetComponent<BloodManager>();
-		}
 	}
 
 	public virtual void OnHit(Geek geek) {
@@ -24,7 +18,6 @@ public class Enemy : MovableGameObject {
 	}
 
 	public void OnInit (float speedXMin, float speedXMax) {
-		curbloodNum = 0;
 		moveXSpeed = 0;
 		moveYSpeed = 0;
 		isDead = false;
@@ -56,7 +49,6 @@ public class Enemy : MovableGameObject {
 		if (!isDead) {
 			animator.Play ("EnemyDie");
 			isDead = true;
-			curbloodNum = 0;
 		}
 	}
 
@@ -65,19 +57,6 @@ public class Enemy : MovableGameObject {
 
 	public void Update() {
 		OnMove ();
-
-		if (isDead && bloodManager) {
-
-			if (curbloodNum < BLOOD_GEN_MAX) {
-
-				bloodManager.AddBlood(transform.position);
-				
-				curbloodNum++;
-
-			} else {
-				gameObject.SetActive (false);
-			}
-		}
 	}
 
 }

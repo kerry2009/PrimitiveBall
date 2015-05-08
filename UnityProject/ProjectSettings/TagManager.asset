@@ -43,8 +43,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: SkyLayer
+  - name: skyLayer
     uniqueID: 1931056457
+    locked: 0
+  - name: cloudsBackLayer
+    uniqueID: 3307317653
     locked: 0
   - name: back_bgLayer
     uniqueID: 2915972021
@@ -55,24 +58,24 @@ TagManager:
   - name: cloudsFrontLayer
     uniqueID: 375365103
     locked: 0
-  - name: cloudsBackLayer
-    uniqueID: 3307317653
-    locked: 0
   - name: front_bgLayer
     uniqueID: 2565087937
     locked: 0
-  - name: EnemysLayer
+  - name: floorBloodLayer
+    uniqueID: 2731602905
+    locked: 0
+  - name: enemyLayer
     uniqueID: 1377554575
     locked: 0
-  - name: GeekLayer
+  - name: geekLayer
     uniqueID: 2713349505
     locked: 0
-  - name: HeroLayer
+  - name: heroLayer
     uniqueID: 3796868185
     locked: 0
-  - name: BloodsLayer
+  - name: bloodLayer
     uniqueID: 4211428735
     locked: 0
-  - name: HitSpawnerLayer
+  - name: hitEffectLayer
     uniqueID: 2405237725
     locked: 0
